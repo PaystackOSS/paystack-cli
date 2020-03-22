@@ -1,0 +1,312 @@
+{
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjY1Nzg4LCJpYXQiOjE1ODQ4MzM5MDIsIm5iZiI6MTU4NDgzMzkwMiwiZXhwIjoxNTg0OTIwMzAyfQ.zBPHfy_CQ86LkeBwWny8Y6zIW9ZkIDUSePBf_QKIwgM",
+  "token_expiry": 1584920302,
+  "user": {
+    "integrations": [
+      {
+        "business_name": "Paystack",
+        "business_type": "registered",
+        "short_name": "paystack",
+        "id": 100043,
+        "logged_in_user_role": {
+          "id": 861,
+          "name": "lukman-for-internal-pilot",
+          "description": "Lukman for Dedicated NUBAN internal pilot"
+        }
+      },
+      {
+        "business_name": "Sample Loan Manager Merchant",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 105884,
+        "logged_in_user_role": {
+          "id": 34,
+          "name": "admin",
+          "description": "This role grants users the permissions to manage everything on the dashboard"
+        }
+      },
+      {
+        "business_name": "Ken Excel Investment Limited",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 110691,
+        "logged_in_user_role": {
+          "id": 33,
+          "name": "developer-support",
+          "description": "This role grants users the permissions necessary for providing technical support"
+        }
+      },
+      {
+        "business_name": "01 Catering and Restaurant Ltd",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 157267,
+        "logged_in_user_role": {
+          "id": 33,
+          "name": "developer-support",
+          "description": "This role grants users the permissions necessary for providing technical support"
+        }
+      },
+      {
+        "business_name": "GTPAY by GTBANK",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 183594,
+        "logged_in_user_role": {
+          "id": 33,
+          "name": "developer-support",
+          "description": "This role grants users the permissions necessary for providing technical support"
+        }
+      },
+      {
+        "business_name": "Lukman",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 336545,
+        "logged_in_user_role": {
+          "id": 34,
+          "name": "admin",
+          "description": "This role grants users the permissions to manage everything on the dashboard"
+        }
+      },
+      {
+        "business_name": "Mocrow Exchange",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 336687,
+        "logged_in_user_role": {
+          "id": 33,
+          "name": "developer-support",
+          "description": "This role grants users the permissions necessary for providing technical support"
+        }
+      },
+      {
+        "business_name": "Abdul's Business",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 337488,
+        "logged_in_user_role": {
+          "id": 34,
+          "name": "admin",
+          "description": "This role grants users the permissions to manage everything on the dashboard"
+        }
+      },
+      {
+        "business_name": "Wificall",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 340712,
+        "logged_in_user_role": {
+          "id": 36,
+          "name": "operations",
+          "description": "This role grants users the permissions to manage everything on the dashboard except to move money out"
+        }
+      },
+      {
+        "business_name": "United Parcel Service",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 343407,
+        "logged_in_user_role": {
+          "id": 33,
+          "name": "developer-support",
+          "description": "This role grants users the permissions necessary for providing technical support"
+        }
+      },
+      {
+        "business_name": "CFL GLOBAL EXPRESS LIMITED",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 349106,
+        "logged_in_user_role": {
+          "id": 34,
+          "name": "admin",
+          "description": "This role grants users the permissions to manage everything on the dashboard"
+        }
+      },
+      {
+        "business_name": "Transfers",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 354036,
+        "logged_in_user_role": {
+          "id": 33,
+          "name": "developer-support",
+          "description": "This role grants users the permissions necessary for providing technical support"
+        }
+      },
+      {
+        "business_name": "QUICKFUND MICROFINANCE BANK",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 379987,
+        "logged_in_user_role": {
+          "id": 34,
+          "name": "admin",
+          "description": "This role grants users the permissions to manage everything on the dashboard"
+        }
+      },
+      {
+        "business_name": "Water",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 387068,
+        "logged_in_user_role": {
+          "id": 34,
+          "name": "admin",
+          "description": "This role grants users the permissions to manage everything on the dashboard"
+        }
+      },
+      {
+        "business_name": "Ruff'n'Tumblekids",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 388598,
+        "logged_in_user_role": {
+          "id": 33,
+          "name": "developer-support",
+          "description": "This role grants users the permissions necessary for providing technical support"
+        }
+      },
+      {
+        "business_name": "Transfers Luq",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 415045,
+        "logged_in_user_role": {
+          "id": 34,
+          "name": "admin",
+          "description": "This role grants users the permissions to manage everything on the dashboard"
+        }
+      },
+      {
+        "business_name": "Ghana Seller",
+        "business_type": "registered",
+        "short_name": null,
+        "id": 416449,
+        "logged_in_user_role": {
+          "id": 34,
+          "name": "admin",
+          "description": "This role grants users the permissions to manage everything on the dashboard"
+        }
+      },
+      {
+        "business_name": "Pawel Azotel",
+        "business_type": "starter",
+        "short_name": null,
+        "id": 418293,
+        "logged_in_user_role": {
+          "id": 34,
+          "name": "admin",
+          "description": "This role grants users the permissions to manage everything on the dashboard"
+        }
+      }
+    ],
+    "email": "lukman@paystack.com",
+    "first_name": "Lukman",
+    "last_name": "Bello",
+    "phone": "+2349053267565",
+    "area_code": "0",
+    "calling_code": "+234",
+    "registration_complete": true,
+    "last_login": "2020-03-21T22:10:21.000Z",
+    "wt_access": "allow",
+    "is_developer": true,
+    "job_title": "developer",
+    "truecaller_verified": false,
+    "drip_tag": "merchant - ghana",
+    "id": 265788,
+    "invited_by": 259084,
+    "current_integration": 336545,
+    "passwordLastResetAt": "2020-03-02T14:30:28.000Z",
+    "createdAt": "2019-03-25T13:50:36.000Z",
+    "updatedAt": "2020-03-21T23:20:43.000Z",
+    "display_state": "test",
+    "role": {
+      "value": 25769803767,
+      "name": "admin",
+      "description": "This role grants users the permissions to manage everything on the dashboard",
+      "integration": 0,
+      "service": "dashboard",
+      "id": 34,
+      "organization": 1,
+      "createdAt": "2018-05-10T23:40:26.000Z",
+      "updatedAt": "2018-09-12T17:28:31.000Z",
+      "isDeleted": false,
+      "is_custom": false
+    },
+    "permissions": [
+      "api-key-*",
+      "api-key-view",
+      "user-view",
+      "user-*",
+      "metrics-*",
+      "settings-*",
+      "settings-view",
+      "transaction-view",
+      "transaction-export",
+      "transaction-dispute",
+      "customer-view",
+      "customer-add",
+      "customer-*",
+      "transfer-view",
+      "transfer-*",
+      "transfer-export",
+      "balance-view",
+      "balance-export",
+      "page-view",
+      "page-*",
+      "plan-view",
+      "plan-*",
+      "settlement-view",
+      "settlement-export",
+      "paymentrequest-view",
+      "paymentrequest-*",
+      "subaccount-*",
+      "subaccount-view",
+      "user-add",
+      "customer-insights",
+      "accounts-*",
+      "accounts-view",
+      "charge-*"
+    ],
+    "password_expiry": "2021-02-25T14:30:28.000Z"
+  },
+  "selected_integration": {
+    "business_name": "Lukman",
+    "business_type": "registered",
+    "short_name": null,
+    "id": 336545,
+    "logged_in_user_role": {
+      "id": 34,
+      "name": "admin",
+      "description": "This role grants users the permissions to manage everything on the dashboard"
+    },
+    "keys": [
+      {
+        "id": 536037,
+        "key": "sk_test_02df9413ed474f26fd3e4ba3a2289cff3f6b39ba",
+        "domain": "test",
+        "type": "secret"
+      },
+      {
+        "id": 536038,
+        "key": "pk_test_72dec37c547bfd309db001900a71e97bea6458bf",
+        "domain": "test",
+        "type": "public"
+      },
+      {
+        "id": 536047,
+        "key": "sk_live_88bd6582eccfbd5801bc4f878e572ae52b4862de",
+        "domain": "live",
+        "type": "secret"
+      },
+      {
+        "id": 536048,
+        "key": "pk_live_fb89c3a0d760e4ce9a532ae11ad7a1fd4807872f",
+        "domain": "live",
+        "type": "public"
+      }
+    ]
+  }
+}
