@@ -97,7 +97,11 @@ $ webhook ping --domain live
 
 #### output
 ```sh
-200 OK
+-  - - - - - - -  - - -  - - - -   - - - --  -- - - - - - - 
+Sending sample charge.success event payload to https://paycash.pstk.xyz/pay/pstk-webhook?country=ng
+401 - - Unauthorized
+Unauthorized
+
 ```
 
 ### Development
@@ -111,7 +115,6 @@ By default, all commands are run in test mode, to switch to live, append the fla
 ### Coming soon
 
  - Sample apps
- - Webhook health check
 
 License
 ----

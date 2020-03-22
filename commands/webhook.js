@@ -25,8 +25,6 @@ const init = () => {
                     token = db.read('token')
 
                 } else {
-                    console.log(expiry);
-                    console.log(now);
                     let password = helpers.prompt("What's your paystack password:\n>", true)
                     var [err, result] = await helpers.promiseWrapper(Paystack.signIn(db.read('user.email'), password));
                     if (!result) {
@@ -46,6 +44,13 @@ const init = () => {
                 if (!urlObject.search || urlObject.search == '?') {
                     urlObject.search = ''
                 }
+                try{
+                    await ngrok.kill();
+                }
+                catch(e){
+                    //log error
+                }
+              
                 let ngrokHost = await ngrok.connect(urlObject.port);
 
 
@@ -65,9 +70,20 @@ const init = () => {
                 }
 
             }
+            else if(args.command == 'ping'){
+               var [e, response] = await helpers.promiseWrapper( Paystack.pingWebhook(args));
+               helpers.infoLog(response.code + ' - - ' + response.text)
+               if( helpers.isJson(response.data)){
+                   helpers.jsonLog(response.data)
+               }else{
+                   helpers.infoLog(response.data)
+               }
+            }
 
             callback();
         });
+
+
 }
 
 module.exports = init
