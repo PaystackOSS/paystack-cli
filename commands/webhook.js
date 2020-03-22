@@ -7,8 +7,8 @@ const init = () => {
         .command('webhook <command> [local_route]', 'runs a webhook endpoint health check and listens for incoming webhooks".')
         .option('--domain  <value>', '  ')
         .validate(function (args) {
-            let selected_integration = db.read('selected_integration');
-            let user = db.read('user')
+            let selected_integration = db.read('selected_integration.id');
+            let user = db.read('user.id')
             if (!selected_integration || !user) {
                 helpers.errorLog("You're not signed in, please run the `login` command before you begin");
                 return false;
