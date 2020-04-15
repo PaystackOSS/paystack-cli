@@ -1,6 +1,6 @@
 {
-  "name": "pstk-cli",
-  "version": "0.0.5-alpha",
+  "name": "@paystack-oss/dev-cli",
+  "version": "0.0.1",
   "private": false,
   "preferGlobal": true,
   "scripts": {
@@ -12,14 +12,9 @@
   "dependencies": {
     "axios": "^0.19.2",
     "chalk": "^3.0.0",
-    "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
     "lowdb": "^1.0.0",
-    "morgan": "~1.9.1",
     "ngrok": "^3.2.7",
-    "paystack": "^2.0.1",
-    "progress": "^2.0.3",
     "progressbar": "^1.3.0",
     "readline-sync": "^1.4.10",
     "shelljs": "^0.8.3",

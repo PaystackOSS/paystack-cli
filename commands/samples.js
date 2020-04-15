@@ -19,10 +19,18 @@ const init = () => {
             return false;
         }
     }).action(async (args, callback) => {
+        let keys = Object.keys(samples)
+        if(keys.indexOf(args.sample) < 0){
+            helpers.errorLog("No sample app available with the name "+ args.sample);
+            helpers.infoLog("Available samples are " + keys.toString())
+            callback()
+            return;
+        }
+        let sample = samples[args.sample];
 
         shell.cd(args.filepath)
-        shell.exec('git clone https://github.com/lukman008/Bakerr-Pay.git')
-        shell.cd('Bakerr-Pay')
+        shell.exec('git clone '+ sample.git)
+        shell.cd(sample.name)
         shell.exec('npm install');
         shell.exec('npm start')
     })

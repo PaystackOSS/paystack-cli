@@ -72,6 +72,7 @@ const init = () => {
             }
             else if(args.command == 'ping'){
                var [e, response] = await helpers.promiseWrapper( Paystack.pingWebhook(args));
+               helpers.infoLog('-  - - - - WEBHOOK RESPONSE - - - -  - -')
                helpers.infoLog(response.code + ' - - ' + response.text)
                if( helpers.isJson(response.data)){
                    helpers.jsonLog(response.data)
