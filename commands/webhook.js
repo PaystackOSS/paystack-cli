@@ -2,10 +2,11 @@ const ngrok = require('ngrok');
 const helpers = require('../lib/helpers')
 const Paystack = require('../lib/Paystack')
 
-const init = () => {
+const init = () => {  
     vorpal
         .command('webhook <command> [local_route]', 'runs a webhook endpoint health check and listens for incoming webhooks".')
         .option('--domain  <value>', '  ')
+        .option('--event  <value>', '  ')
         .validate(function (args) {
             let selected_integration = db.read('selected_integration.id');
             let user = db.read('user.id')

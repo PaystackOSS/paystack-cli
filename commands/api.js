@@ -1,6 +1,6 @@
 const APIs = require('../lib/paystack/apis')
 const helpers = require('../lib/helpers')
-
+ 
 let commands = Object.keys(APIs)
 const init = () => {
     commands.forEach((command) => {

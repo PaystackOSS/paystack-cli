@@ -1,13 +1,13 @@
 {
   "name": "@paystack-oss/dev-cli",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "private": false,
   "preferGlobal": true,
   "scripts": {
     "start": "node cli.js"
   },
   "bin": {
-    "paystack-cli": "./cli.js"
+    "paystack": "./cli.js"
   },
   "dependencies": {
     "axios": "^0.19.2",

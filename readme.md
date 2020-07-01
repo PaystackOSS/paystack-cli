@@ -1,6 +1,6 @@
-# pstk-cli
+# dev-cli
 
-[![N|Solid](https://res.cloudinary.com/drps6uoe4/image/upload/c_scale,w_200/v1584835701/Paystack-CeruleanBlue-StackBlue-HL_2_neik7g.png)](https://paystack.com)
+[https://res.cloudinary.com/drps6uoe4/image/upload/c_scale,w_200/v1584835701/Paystack-CeruleanBlue-StackBlue-HL_2_neik7g.png](https://paystack.com)
 
 The Paystack CLI helps you build, test, and manage your Paystack integration right from the terminal.
 
@@ -22,7 +22,7 @@ Paystack requires [Node.js](https://nodejs.org/) v8+ to run.
 Install the dependencies and devDependencies and start the instance.
 
 ```sh
-$ npm i @paystack-oss/dev-cli -g
+$ npm install -g @paystack-oss/dev-cli
 $ paystack-cli
 $ login
 ```
@@ -104,6 +104,14 @@ Unauthorized
 
 ```
 
+
+### Sample Apps
+We have built different sample apps and embedded them in the CLI, you can setup a sample project in your terminal by running
+
+```sh
+$ sample sample-react "~/Desktop/Work"
+```
+
 ### Development
 
 Want to contribute? Great!
@@ -112,9 +120,7 @@ Want to contribute? Great!
 By default, all commands are run in test mode, to switch to live, append the flag *"--domain live"* at the end of your command
 
 
-### Coming soon
 
- - Sample apps
 
 License
 ----

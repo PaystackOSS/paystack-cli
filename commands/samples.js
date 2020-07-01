@@ -10,7 +10,8 @@ if (!shell.which('git')) {
 let samples = require('../lib/samples')
 
 const init = () => {
-    vorpal.command('sample <sample> <filepath>', 'Get started quickly with a Paystack sample project')
+    let keys = Object.keys(samples)
+    vorpal.command('sample <sample_name> <outputDir>', 'Get started quickly with a Paystack sample project.  Available samples are '+ keys.toString() )
     .validate(function (args) {
         let selected_integration = db.read('selected_integration.id');
         let user = db.read('user.id')
@@ -19,7 +20,7 @@ const init = () => {
             return false;
         }
     }).action(async (args, callback) => {
-        let keys = Object.keys(samples)
+        
         if(keys.indexOf(args.sample) < 0){
             helpers.errorLog("No sample app available with the name "+ args.sample);
             helpers.infoLog("Available samples are " + keys.toString())
