@@ -1,6 +1,6 @@
 # dev-cli
 
-[https://res.cloudinary.com/drps6uoe4/image/upload/c_scale,w_200/v1584835701/Paystack-CeruleanBlue-StackBlue-HL_2_neik7g.png](https://paystack.com)
+![https://paystack.com](https://res.cloudinary.com/drps6uoe4/image/upload/c_scale,w_200/v1584835701/Paystack-CeruleanBlue-StackBlue-HL_2_neik7g.png)
 
 The Paystack CLI helps you build, test, and manage your Paystack integration right from the terminal.
 
