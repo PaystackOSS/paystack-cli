@@ -1,6 +1,6 @@
 {
   "name": "@paystack-oss/dev-cli",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "private": false,
   "preferGlobal": true,
   "scripts": {
@@ -10,7 +10,7 @@
     "paystack": "./cli.js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chalk": "^3.0.0",
     "debug": "~2.6.9",
     "lowdb": "^1.0.0",

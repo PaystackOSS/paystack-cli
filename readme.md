@@ -1,6 +1,7 @@
 # dev-cli
 
-[https://res.cloudinary.com/drps6uoe4/image/upload/c_scale,w_200/v1584835701/Paystack-CeruleanBlue-StackBlue-HL_2_neik7g.png](https://paystack.com)
+![Paystack CLI](https://res.cloudinary.com/drps6uoe4/image/upload/c_scale,w_200/v1584835701/Paystack-CeruleanBlue-StackBlue-HL_2_neik7g.png)
+
 
 The Paystack CLI helps you build, test, and manage your Paystack integration right from the terminal.
 
@@ -112,9 +113,6 @@ We have built different sample apps and embedded them in the CLI, you can setup 
 $ sample sample-react "~/Desktop/Work"
 ```
 
-### Development
-
-Want to contribute? Great!
 
 
 By default, all commands are run in test mode, to switch to live, append the flag *"--domain live"* at the end of your command
