@@ -14,39 +14,30 @@ const init = function () {
 
         }
         else {
-            var email = helpers.prompt('Email address\n')
-            let password = helpers.prompt('Password\n', true)
-            var [e, response] = await helpers.promiseWrapper(Paystack.signIn(email, password))
+            var email = helpers.prompt('Email address\n');
+            let password = helpers.prompt('Password\n', true);
+            var [e, response] = await helpers.promiseWrapper(Paystack.signIn(email, password));
             if (response) {
                 token = response.token;
                 user = response.user;
-                db.write('token', token)
-                db.write('user', user)
-                helpers.successLog('Login successful')
+                db.write('token', token);
+                db.write('user', user);
+                helpers.successLog('Login successful');
             }else{
-                helpers.errorLog('Login failed')
+                helpers.errorLog('Login failed');
                 return;
-            }
-
-
-          
+            }          
         }
-
-
-
         if (response || (token && user)) {
-
-
-            var [err, integration] = await helpers.promiseWrapper(Paystack.selectIntegration(user.integrations, token))
+            var [err, integration] = await helpers.promiseWrapper(Paystack.selectIntegration(user.integrations, token));
             if (err) {
-                helpers.errorLog(err)
+                helpers.errorLog(err);
             }
             db.write('selected_integration', integration);
             let user_role = db.read('selected_integration.logged_in_user_role');
-
             var [err, integrationData] = await helpers.promiseWrapper(Paystack.getIntegration(integration.id, token));
             if (err) {
-                helpers.errorLog(err)
+                helpers.errorLog(err);
                 return
             }
             integrationData.logged_in_user_role = user_role;
