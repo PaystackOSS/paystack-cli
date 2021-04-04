@@ -1,24 +1,62 @@
 {
-  "name": "@paystack-oss/dev-cli",
-  "version": "0.0.6",
-  "private": false,
-  "preferGlobal": true,
-  "scripts": {
-    "start": "node cli.js"
-  },
+  "name": "paystack",
+  "description": "Set up, test, and manage your Paystack integration directly from the terminal.",
+  "version": "0.0.2",
+  "author": "Lukman Bello @lukman-paystack",
   "bin": {
-    "paystack": "./cli.js"
+    "paystack": "./bin/run"
   },
+  "bugs": "https://github.com/PaystackOSS/paystack-cli/issues",
   "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/plugin-help": "^3.2.2",
     "axios": "^0.21.1",
-    "chalk": "^3.0.0",
-    "debug": "~2.6.9",
     "lowdb": "^1.0.0",
-    "ngrok": "^3.2.7",
-    "progressbar": "^1.3.0",
+    "ngrok": "^3.4.0",
+    "readline": "^1.3.0",
     "readline-sync": "^1.4.10",
-    "shelljs": "^0.8.3",
-    "url": "^0.11.0",
-    "vorpal": "^1.12.0"
+    "shelljs": "^0.8.4"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "eslint": "^5.16.0",
+    "eslint-config-oclif": "^3.1.0",
+    "globby": "^10.0.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/PaystackOSS/paystack-cli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "hooks": {
+      "init": [
+        "./src/hooks/init/add-api-commands.js"
+      ]
+    },
+    "bin": "paystack",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "PaystackOSS/paystack-cli",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
   }
 }
