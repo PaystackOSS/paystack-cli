@@ -162,6 +162,16 @@ function pingWebhook(flags) {
           data: response.data,
         })
       }).catch(error => {
+        if(!error.response){
+          resolve({
+            code: 999,
+            text:error.message,
+            data:error.stack
+            }
+          )
+          return
+        }
+        
         resolve({
           code: error.response.status,
           text: error.response.statusText,

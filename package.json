@@ -1,7 +1,7 @@
 {
   "name": "paystack",
   "description": "Set up, test, and manage your Paystack integration directly from the terminal.",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "author": "Lukman Bello @lukman-paystack",
   "bin": {
     "paystack": "./bin/run"
@@ -11,6 +11,7 @@
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
+    "@oclif/plugin-update": "^1.3.10",
     "axios": "^0.21.1",
     "lowdb": "^1.0.0",
     "ngrok": "^3.4.0",
@@ -35,6 +36,7 @@
   ],
   "homepage": "https://github.com/PaystackOSS/paystack-cli",
   "keywords": [
+    "paystack",
     "oclif"
   ],
   "license": "MIT",
@@ -48,7 +50,9 @@
     },
     "bin": "paystack",
     "plugins": [
-      "@oclif/plugin-help"
+      "@oclif/plugin-help",
+      "@oclif/plugin-update",
+      "@oclif/plugin-not-found"
     ]
   },
   "repository": "PaystackOSS/paystack-cli",
