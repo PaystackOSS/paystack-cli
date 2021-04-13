@@ -45,16 +45,16 @@ class WebhookCommand extends Command {
       } catch (error) {
         this.error(error)
       }
-
       let ngrokHost = await ngrok.connect(urlObject.port)
-
       let ngrokURL = ngrokHost + urlObject.pathname + urlObject.search
       let domain = 'test'
       if (flags.domain === 'live') {
         domain = 'live'
       }
+      console.log('tunnel', ngrokURL)
       let originalWebhookUrl = db.read('selected_integration.' + domain + '_webhook_endpoint')
       helpers.infoLog(`Forwarding webhook events to ${flags.forward}`)
+
       // eslint-disable-next-line no-unused-vars
       var [err, result] = await helpers.promiseWrapper(Paystack.setWebhook(ngrokURL, token, db.read('selected_integration.id'), domain))
       if (err) {

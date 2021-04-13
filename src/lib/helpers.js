@@ -57,16 +57,43 @@ function findSchema(command, topic) {
   return schema
 }
 
+function getKeys(token, type = 'secret', domain = 'test') {
+  return new Promise((resolve, reject) => {
+    axios.get('https://api.paystack.co/integration/keys', { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true } }).then(response => {
+      let key = {};
+      let keys = response.data.data;
+      if (keys.length) {
+        for (let i = 0; i < keys.length; i++) {
+          if (keys[i].domain === domain && keys[i].type === type) {
+            key = keys[i]
+            break
+          }
+        }
+      }
+      resolve(key)
+    }).catch(error => {
+      if (error.response) {
+        reject(error.response.data.message)
+        return
+      }
+      reject(error)
+    })
+  })
+}
+
 async function executeSchema(schema, flags) {
   let domain = 'test'
   if (flags.domain) {
     domain = flags.domain
   }
-  let key = db.query('selected_integration.keys', {domain, type: 'secret'}).key
+  
+  let token = db.read('token');
+  let keyObject = await getKeys(token, 'secret', domain);
+  // let key = db.query('selected_integration.keys', {domain, type: 'secret'}).key
   let instance = axios.create({
     baseURL: 'https://api.paystack.co',
     timeout: 5000,
-    headers: {Authorization: 'Bearer ' + key},
+    headers: {Authorization: 'Bearer ' + keyObject.key},
   })
   return new Promise((resolve, reject) => {
     let query

@@ -67,15 +67,10 @@ class LoginClass extends Command {
       }
       integrationData.logged_in_user_role = user_role
       db.write('selected_integration', integrationData)
-      var [err, keys] = await helpers.promiseWrapper(Paystack.getKeys(token))
-      if (err) {
-        this.error(err)
-      }
-      db.write('selected_integration.keys', keys)
 
       helpers.infoLog('Logged in as ' + user.email + ' -  ' + integration.business_name + ' (' + integration.id + ')')
     } else {
-      this.error(' - -  - - -  - ')
+      this.error(' - - - - -  - ')
     }
   }
 }
