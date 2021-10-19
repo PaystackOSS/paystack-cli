@@ -17,6 +17,7 @@ const init = function () {
             var email = helpers.prompt('Email address\n')
             let password = helpers.prompt('Password\n', true)
             var [e, response] = await helpers.promiseWrapper(Paystack.signIn(email, password))
+            console.log(response)
             if (response) {
                 token = response.token;
                 user = response.user;
@@ -29,7 +30,7 @@ const init = function () {
             }
 
 
-          
+
         }
 
 
