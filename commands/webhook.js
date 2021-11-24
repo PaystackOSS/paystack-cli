@@ -36,6 +36,7 @@ const init = () => {
 
                 if (!args.local_route) {
                     helpers.errorLog('To listen to webhook events locally, you have to specify a local url to forward events to e.g localhost:3000/webhook')
+                    return
                 }
                 let urlObject = helpers.parseURL(args.local_route)
 
@@ -72,6 +73,8 @@ const init = () => {
 
             }
             else if(args.command == 'ping'){
+                await helpers.promiseWrapper( Paystack.refreshIntegration(args));
+                
                var [e, response] = await helpers.promiseWrapper( Paystack.pingWebhook(args));
                helpers.infoLog('-  - - - - WEBHOOK RESPONSE - - - -  - -')
                helpers.infoLog(response.code + ' - - ' + response.text)

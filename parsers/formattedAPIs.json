@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-module.exports = {
+{
     "subaccount": [
         {
             "api": "update",
@@ -10,7 +9,7 @@ module.exports = {
         },
         {
             "api": "fetch",
-            "endpoint": "https://api.paystack.co/subaccount/{ID}",
+            "endpoint": "https://api.paystack.co/subaccount",
             "method": "GET",
             "params": [],
             "description": null
@@ -80,6 +79,11 @@ module.exports = {
                 },
                 {
                     "parameter": "settlement_schedule",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "",
                     "required": false,
                     "type": "String"
                 },
@@ -209,7 +213,11 @@ module.exports = {
                     "required": false,
                     "type": "String"
                 },
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "end pages created to your customers by giving out a link in this format https://paystack.com/pay/:slug. For instance, a valid link for the page above would be https://paystack.com/pay/5nApBwZkv",
                     "required": false,
@@ -261,7 +269,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/transfer",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -302,17 +314,12 @@ module.exports = {
         },
         {
             "api": "verify",
-            "endpoint": "https://api.paystack.co/transfer/{reference}",
+            "endpoint": "{reference}",
             "method": "GET",
             "params": [
                 {
                     "parameter": "perPage",
                     "required": false,
-                    "type": "String"
-                },
-                {
-                    "parameter": "reference",
-                    "required": true,
                     "type": "String"
                 },
                 {
@@ -328,7 +335,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/transfer/disable_otp",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "n the event that you want to be able to complete transfers programmatically without use of OTPs, this endpoint helps disable that….with an OTP. No arguments required. An OTP is sent to you on your business phone",
                     "required": true,
@@ -349,7 +360,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/transfer/bulk",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -360,7 +375,11 @@ module.exports = {
                     "required": false,
                     "type": "String"
                 },
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "tatus of transfer object returned will be ‘pending’ if OTP is disabled. In the event that an OTP is required, status will read ‘otp’",
                     "required": true,
@@ -379,7 +398,16 @@ module.exports = {
                     "required": true,
                     "type": "String"
                 },
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                }
             ],
             "description": "**Body Params**\n- **otp** (_required_) - OTP sent to business phone to verify disabling OTP requirement\n\n"
         },
@@ -402,6 +430,16 @@ module.exports = {
             "method": "GET",
             "params": [
                 {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "Query Params",
+                    "required": false,
+                    "type": "String"
+                },
+                {
                     "parameter": "perPage",
                     "required": false,
                     "type": "String"
@@ -419,7 +457,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/transfer/resend_otp",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -513,7 +555,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/paymentrequest/finalize/ID_OR_CODE",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -653,7 +699,7 @@ module.exports = {
         },
         {
             "api": "verify",
-            "endpoint": "https://api.paystack.co/paymentrequest/verify/{ID}",
+            "endpoint": "https://api.paystack.co/paymentrequest/verify/ID_OR_CODE",
             "method": "GET",
             "params": [
                 {
@@ -661,7 +707,11 @@ module.exports = {
                     "required": false,
                     "type": "String"
                 },
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "ote that a key is added called `pending_amount` when you fetch an invoice. This is because when paying for an invoice, you can choose to pay part but not all.  Whenever a successful transaction is made, the key updates to reveal what’s left of the invoice to pay",
                     "required": false,
@@ -677,7 +727,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/transferrecipient",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -723,7 +777,7 @@ module.exports = {
         },
         {
             "api": "delete",
-            "endpoint": "https://api.paystack.co/transferrecipient",
+            "endpoint": "{recipient_code_or_id}",
             "method": "DELETE",
             "params": [],
             "description": null
@@ -805,7 +859,11 @@ module.exports = {
                     "required": false,
                     "type": "String"
                 },
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "ote the `email_token` attribute for the subscription object. We create one on each subscription so customers can cancel their subscriptions from within the invoices sent to their mailboxes. Since they are not authorized, the email tokens are what we use to authenticate the requests over the API",
                     "required": false,
@@ -867,7 +925,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/bulkcharge/id_or_code",
             "method": "GET",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Path Params",
                     "required": false,
@@ -886,7 +948,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/bulkcharge/id_or_code/charges",
             "method": "GET",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Path Params",
                     "required": false,
@@ -897,7 +963,16 @@ module.exports = {
                     "required": true,
                     "type": "String"
                 },
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "Query Params",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "status",
                     "required": false,
@@ -912,6 +987,11 @@ module.exports = {
                     "parameter": "page",
                     "required": false,
                     "type": "Number"
+                },
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
                 }
             ],
             "description": "This endpoint retrieves the charges associated with a specified batch code. Pagination parameters are available. You can also filter by status. Charge statuses can be `pending`, `success` or `failed`.\n\n**Path Params**\n- **id_or_code** (_required_) - An ID or code for the batch whose charges you want to retrieve.\n\n**Query Params**\n- **status** - `pending`, `success` or `failed`\n- **perPage**\n- **page**\n"
@@ -921,7 +1001,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/bulkcharge",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -940,7 +1024,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/bulkcharge/resume/batch_code",
             "method": "GET",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Path Params",
                     "required": false,
@@ -959,7 +1047,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/bulkcharge/pause/batch_code",
             "method": "GET",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Path Params",
                     "required": false,
@@ -1018,7 +1110,11 @@ module.exports = {
             "endpoint": "{ACCOUNT_NUMBER}&bank_code={BANK_CODE}&bvn={BVN}",
             "method": "GET",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Path Params",
                     "required": false,
@@ -1049,7 +1145,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/charge/submit_otp",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -1091,7 +1191,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/charge/submit_birthday",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -1115,7 +1219,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/charge/tokenize",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -1150,6 +1258,11 @@ module.exports = {
                     "parameter": "card.expiry_year",
                     "required": true,
                     "type": "String"
+                },
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
                 }
             ],
             "description": "Send an array of objects with authorization codes and amount in kobo so we can process transactions as a batch.\n\n**Body Params**\n- **email** (_required_) - Customer's email address\n- **card** (_required_) - Card to tokenize\n- **card.number** (_required_) - Card to tokenize\n- **card.cvv** (_required_) - Card security code\n- **card.expiry_month** (_required_) - Expiry month of card\n- **card.expiry_year** (_required_) - Expiry year of card\n"
@@ -1159,7 +1272,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/charge/reference",
             "method": "GET",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -1183,7 +1300,11 @@ module.exports = {
                     "required": false,
                     "type": "String"
                 },
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -1262,7 +1383,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/charge/submit_phone",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -1285,7 +1410,7 @@ module.exports = {
     "transaction": [
         {
             "api": "verify",
-            "endpoint": "https://api.paystack.co/transaction/verify/{reference}",
+            "endpoint": "{REFERENCE}",
             "method": "GET",
             "params": [
                 {
@@ -1377,7 +1502,7 @@ module.exports = {
                     "type": "String"
                 },
                 {
-                    "parameter": "email",
+                    "parameter": " email",
                     "required": true,
                     "type": "String"
                 },
@@ -1467,7 +1592,16 @@ module.exports = {
             "endpoint": "https://api.paystack.co/transaction/check_authorization",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "Body Params",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "authorization_code",
                     "required": true,
@@ -1487,6 +1621,16 @@ module.exports = {
                     "parameter": "currency",
                     "required": false,
                     "type": "String"
+                },
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "n test mode, we will return insufficient funds for an amount greater than or equal 500,000 naira",
+                    "required": false,
+                    "type": "String"
                 }
             ],
             "description": "All mastercard and visa authorizations can be checked with this endpoint to know if they have funds for the payment you seek.\n\n**Body Params**\n- **authorization_code** (_required_) - Authorization code for mastercard or VISA authorization belonging to email.\n- **amount** (_required_) - Amount in kobo\n- **email** (_required_) - Customer's email address\n- **currency** - A currency for the amount we want to check\n\nIn test mode, we will return insufficient funds for an amount greater than or equal 500,000 naira."
@@ -1496,6 +1640,16 @@ module.exports = {
             "endpoint": "https://api.paystack.co/transaction/totals",
             "method": "GET",
             "params": [
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "Query Params",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "from",
                     "required": false,
@@ -1808,7 +1962,7 @@ module.exports = {
             "description": "**Query Params**\n- **exclude_transactions** - By default, fetching a customer returns all their transactions. Set this to true to disable this behaviour."
         },
         {
-            "api": "set_risk_action",
+            "api": "white/blacklist",
             "endpoint": "https://api.paystack.co/customer/set_risk_action",
             "method": "POST",
             "params": [
@@ -1830,12 +1984,31 @@ module.exports = {
             "endpoint": "https://api.paystack.co/customer/deactivate_authorization",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "Body Params",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "authorization_code",
                     "required": true,
                     "type": "String"
                 },
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                }
             ],
             "description": "For when the card needs to be forgotten...\n\n**Body Params**\n- **authorization_code** (_required_) - Authorization code to be deactivated\n\n"
         }
@@ -1846,7 +2019,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/refund",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Params",
                     "required": false,
@@ -1911,7 +2088,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/refund",
             "method": "GET",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "transaction",
                     "required": false,
@@ -1930,7 +2111,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/refund",
             "method": "GET",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "transaction",
                     "required": false,
@@ -1967,6 +2152,51 @@ module.exports = {
             "description": null
         }
     ],
+    "refund?from&to&page&perPage&transaction&status": [
+        {
+            "api": "list",
+            "endpoint": "?from&to&page&perPage&transaction&status",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "Query Params",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "transaction",
+                    "required": true,
+                    "type": "String"
+                },
+                {
+                    "parameter": "amount",
+                    "required": false,
+                    "type": "Number"
+                },
+                {
+                    "parameter": "currency",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "customer_note",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "merchant_note",
+                    "required": false,
+                    "type": "String"
+                }
+            ],
+            "description": "This lists all the disputes logged against your transactions\n\n**Query Params**\n- **transaction** _(required)_: Identifier for transaction to be refunded\n- **amount** _(optional)_: How much in kobo to be refunded to the customer. Amount is optional(defaults to original transaction amount) and cannot be more than the original transaction amount.\n- **currency**: Three-letter ISO currency\n- **customer_note** _(optional)_: customer reason\n- **merchant_note** _(optional)_: merchant reason"
+        }
+    ],
     "balance": [
         {
             "api": "check",
@@ -1989,6 +2219,16 @@ module.exports = {
             "endpoint": "https://api.paystack.co/settlement",
             "method": "GET",
             "params": [
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
+                {
+                    "parameter": "Query Params",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "from",
                     "required": false,
@@ -2038,7 +2278,11 @@ module.exports = {
             "endpoint": "https://api.paystack.co/verifications",
             "method": "POST",
             "params": [
-              
+                {
+                    "parameter": "",
+                    "required": false,
+                    "type": "String"
+                },
                 {
                     "parameter": "Body Parameters",
                     "required": false,
