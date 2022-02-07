@@ -24,7 +24,7 @@ Install the dependencies and devDependencies and start the instance.
 
 ```sh
 $ npm install -g @paystack-oss/dev-cli
-$ paystack-cli
+$ paystack
 $ login
 ```
 
