@@ -4,7 +4,7 @@ const readlineSync = require('readline-sync')
 const chalk = require('chalk')
 const url = require('url')
 const APIs = require('./paystack/apis')
-const {cli} = require('cli-ux')
+const CliUx = require ('@oclif/core');
 const axios = require('axios')
 const db = require('./db')
 
@@ -48,7 +48,7 @@ function parseURL(uri) {
   return url.parse(uri)
 }
 function findSchema(command, topic) {
-  let schema
+  let schema = null
   APIs[command].forEach(f => {
     if (f.api === topic) {
       schema = f
@@ -93,7 +93,7 @@ async function executeSchema(schema, flags) {
   let instance = axios.create({
     baseURL: 'https://api.paystack.co',
     timeout: 5000,
-    headers: {Authorization: 'Bearer ' + keyObject.key},
+    headers: {Authorization: 'Bearer ' + keyObject.key, 'User-Agent':'Paystack-CLI 0.0.7'},
   })
   return new Promise((resolve, reject) => {
     let query
@@ -167,7 +167,7 @@ function getWebhookMessage(requestBody) {
 function webhookInspector(ngrokApi, tunnel) {
   let id = ''
   setInterval(() => {
-    cli.action.start('.')
+    CliUx.ux.action.start('.')
     ngrokApi.get(`/api/requests/http?tunnel_name=${tunnel.name}`).then(httpRequests => {
       httpRequests = JSON.parse(httpRequests).requests
       if (httpRequests.length === 0) {

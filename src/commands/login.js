@@ -1,7 +1,7 @@
 /* eslint-disable no-redeclare */
 /* eslint-disable camelcase */
 /**  global db **/
-const {Command} = require('@oclif/command')
+const {Command} = require('@oclif/core')
 const db = require('../lib/db')
 const shell = require('shelljs')
 if (!shell.which('git')) {

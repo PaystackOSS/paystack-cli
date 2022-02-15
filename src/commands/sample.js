@@ -1,4 +1,4 @@
-const {Command} = require('@oclif/command')
+const {Command} = require('@oclif/core')
 const shell = require('shelljs')
 if (!shell.which('git')) {
   shell.echo('Sorry, this script requires git')
@@ -9,7 +9,7 @@ let samples = require('../lib/samples')
 
 class SampleCommand extends Command {
   async run() {
-    const {args} = this.parse(SampleCommand)
+    const {args} = await this.parse(SampleCommand)
     let keys = Object.keys(samples)
     if (keys.indexOf(args.sample) < 0) {
       this.error('No sample app available with the name ' + args.sample + ', available samples are ' + keys.join(', '))

@@ -2,7 +2,7 @@
 /* eslint-disable block-scoped-var */
 /* eslint-disable no-redeclare */
 /* eslint-disable camelcase */
-const {Command, flags} = require('@oclif/command')
+const {Command,Flags} = require('@oclif/core')
 const ngrok = require('ngrok')
 const helpers = require('../lib/helpers')
 const Paystack = require('../lib/paystack')
@@ -15,7 +15,7 @@ class WebhookCommand extends Command {
     if (!selected_integration || !user) {
       this.error("You're not signed in, please run the `login` command before you begin")
     }
-    const {args, flags} = this.parse(WebhookCommand)
+    const {args, flags} = await this.parse(WebhookCommand)
     switch (args.subcommand) {
     case 'listen': {
       let token = ''
@@ -115,7 +115,7 @@ WebhookCommand.args = [
 ]
 
 WebhookCommand.flags = {
-  forward: flags.string(),
-  domain: flags.string(),
+  forward: Flags.string(),
+  domain: Flags.string(),
 }
 module.exports = WebhookCommand

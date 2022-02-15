@@ -19,13 +19,13 @@ And of course the Paystack CLI is open source with a [public repository](https:/
 
 ## Installation
 
-Paystack requires [Node.js](https://nodejs.org/) v8+ to run.
+Paystack requires [Node.js](https://nodejs.org/) v12+ to run.
 
 Install the dependencies and devDependencies and start the instance.
 
 ```sh
 $ npm install -g @paystack-oss/dev-cli
-$ paystack-cli
+$ paystack
 $ login
 ```
 
