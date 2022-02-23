@@ -86,14 +86,10 @@ ${toTitleCase(key)}Command.args = [
 
 
 module.exports = ${toTitleCase(key)}Command;
-
-
 `
-
     fs.writeFile(`./src/commands/${key}.js`, script, () => {
         declaredCommands.push(key)
     })
-    
 })
 
 

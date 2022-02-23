@@ -4,7 +4,7 @@ const readlineSync = require('readline-sync')
 const chalk = require('chalk')
 const url = require('url')
 const APIs = require('./paystack/apis')
-const CliUx = require ('@oclif/core');
+const {CliUx} = require ('@oclif/core');
 const axios = require('axios')
 const db = require('./db')
 
