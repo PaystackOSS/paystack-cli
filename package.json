@@ -1,7 +1,7 @@
 {
   "name": "@paystack-oss/dev-cli",
   "description": "Set up, test, and manage your Paystack integration directly from the terminal.",
-  "version": "1.0.0-nightly",
+  "version": "1.0.0-nightly.0",
   "author": "Lukman Bello @lukman-paystack",
   "bin": {
     "paystack": "./bin/run"
