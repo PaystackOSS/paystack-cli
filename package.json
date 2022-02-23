@@ -1,7 +1,7 @@
 {
   "name": "Paystack",
   "description": "Set up, test, and manage your Paystack integration directly from the terminal.",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "author": "Lukman Bello @lukman-paystack",
   "bin": {
     "paystack": "./bin/run"
