@@ -17,6 +17,7 @@
     "@oclif/plugin-plugins": "^2.0.1",
     "@oclif/plugin-update": "^3.0.0",
     "@oclif/plugin-version": "^1",
+    "7zip-min": "^1.4.1",
     "axios": "^0.21.1",
     "lowdb": "^1.0.0",
     "ngrok": "^3.4.0",
@@ -50,7 +51,14 @@
   "main": "src/index.js",
   "oclif": {
     "macos": {
-      "identifier": "com.paystack.cli"
+      "identifier": "com.paystack.cli",
+      "sign": "Developer ID Installer: Paystack Payments Limited (A2JLN3TYKB)"
+    },
+    "update": {
+      "s3": {
+        "host": "public-paystack-cli.s3.eu-west-1.amazonaws.com",
+        "bucket": "public-paystack-cli"
+      }
     },
     "commands": "./src/commands",
     "topicSeparator": " ",

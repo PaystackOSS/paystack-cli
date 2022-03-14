@@ -1,7 +1,8 @@
 
 const {Command, Flags} = require('@oclif/core')
 const helpers = require('../lib/helpers')
-const APIs = require('../lib/paystack/apis')
+const APIs = require('../lib/paystack/APIs.json')
+const Paystack = require('../lib/paystack')
 const db = require('../lib/db')
 let key = 'refund';
 let API = APIs[key];
@@ -15,6 +16,16 @@ class RefundCommand extends Command {
     if (!selected_integration || !user) {
       this.error("You're not signed in, please run the `login` command before you begin")
     }
+    let token = ''
+      let expiry = parseInt(db.read('token_expiry'), 10) * 1000
+      let now = parseFloat(Date.now().toString())
+
+      if (expiry > now) {
+        token = db.read('token')
+      } else {
+        await helpers.promiseWrapper(Paystack.refreshIntegration())
+        token = db.read('token')
+      }
     let schema = helpers.findSchema(key, args.endpoint, flags)
     if(!schema){
       helpers.errorLog(`ValidationError: Invalid endpoint 'refund'`)
@@ -63,6 +74,15 @@ API.forEach(path => {
       addedFlags.push(param.parameter)
     }
   })
+  if(path.variables){
+    path.variables.forEach((variable)=>{
+      if(addedFlags.indexOf(variable.key) < 0){
+        RefundCommand.flags[variable.key] = Flags.string();
+        addedFlags.push(variable.key);
+      }
+    })
+  }
+ 
 })
 RefundCommand.args = [
     {name: 'endpoint',   required: true, options: endpoints}
@@ -70,5 +90,3 @@ RefundCommand.args = [
 
 
 module.exports = RefundCommand;
-
-

@@ -3,7 +3,7 @@
 const readlineSync = require('readline-sync')
 const chalk = require('chalk')
 const url = require('url')
-const APIs = require('./paystack/apis')
+const APIs = require('./paystack/APIs.json')
 const {CliUx} = require ('@oclif/core');
 const axios = require('axios')
 const db = require('./db')
@@ -81,8 +81,14 @@ function getKeys(token, type = 'secret', domain = 'test') {
   })
 }
 
+function buildAPIEndpoint(schema){
+  return endpoint =schema.baseUrl+schema.path;
+}
+
 async function executeSchema(schema, flags) {
   let domain = 'test'
+  let endpoint = buildAPIEndpoint(schema);
+  // schema.endpoint = endpoint;
   if (flags.domain) {
     domain = flags.domain
   }
@@ -99,13 +105,24 @@ async function executeSchema(schema, flags) {
     let query
     let data
     if (schema.method === 'GET') query = flags
-    if (schema.method === 'POST' || schema.method === 'PUT') data = flags
+    if (schema.method === 'POST' || schema.method === 'PUT') data = flags;
+    if(schema.variables){
+        schema.variables.every((variable)=>{
+          if(!flags[variable.key]){
+            reject('--'+ variable.key + ' is required');
+            return false
+          }
+         endpoint = endpoint.replace(`:${variable.key}`,flags[variable.key] );
+          return true
+        })
+    }
+    schema.endpoint = endpoint;
     if (schema.endpoint.indexOf('{')) {
       let path = schema.endpoint.slice(schema.endpoint.indexOf('{') + 1, schema.endpoint.indexOf('}'))
 
       schema.endpoint = schema.endpoint.replace('{' + path + '}', flags[path])
     }
-    if (schema.parameterType === 'query') {
+    if (schema.method === 'GET') {
       let queryString = Object.keys(flags).map(key => key + '=' + flags[key]).join('&')
       schema.endpoint = schema.endpoint + '?' + queryString
     }

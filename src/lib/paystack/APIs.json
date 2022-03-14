@@ -1,0 +1,3071 @@
+{
+    "transaction": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/:id",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "transaction",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) The ID of the transaction to fetch"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/:id/event",
+            "method": "GET",
+            "params": [],
+            "api": "get_event",
+            "parent": "transaction",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/:id/session",
+            "method": "GET",
+            "params": [],
+            "api": "get_session",
+            "parent": "transaction",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "transaction"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/initialize",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "email",
+                    "description": "(Required) Customer's email address",
+                    "required": true
+                },
+                {
+                    "parameter": "amount",
+                    "description": "(Required) Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": true
+                },
+                {
+                    "parameter": "currency",
+                    "description": "The transaction currency",
+                    "required": false
+                },
+                {
+                    "parameter": "reference",
+                    "description": "Unique transaction reference. Only -, ., = and alphanumeric characters allowed.",
+                    "required": false
+                },
+                {
+                    "parameter": "callback_url",
+                    "description": "Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction",
+                    "required": false
+                },
+                {
+                    "parameter": "plan",
+                    "description": "If transaction is to create a subscription to a predefined plan, provide plan code here. \nThis would invalidate the value provided in amount",
+                    "required": false
+                },
+                {
+                    "parameter": "invoice_limit",
+                    "description": "Number of times to charge customer during subscription to plan",
+                    "required": false
+                },
+                {
+                    "parameter": "metadata",
+                    "description": "Stringified JSON object of custom data",
+                    "required": false
+                },
+                {
+                    "parameter": "channels",
+                    "description": "An array of payment channels to control what channels you want to make available to the user to make a payment with",
+                    "required": false
+                },
+                {
+                    "parameter": "channels",
+                    "description": "An array of payment channels to control what channels you want to make available to the user to make a payment with",
+                    "required": false
+                },
+                {
+                    "parameter": "split_code",
+                    "description": "The split code of the transaction split",
+                    "required": false
+                },
+                {
+                    "parameter": "subaccount",
+                    "description": "The code for the subaccount that owns the payment",
+                    "required": false
+                },
+                {
+                    "parameter": "transaction_charge",
+                    "description": "A flat fee to charge the subaccount for a transaction. \nThis overrides the split percentage set when the subaccount was created",
+                    "required": false
+                },
+                {
+                    "parameter": "bearer",
+                    "description": "The bearer of the transaction charge",
+                    "required": false
+                }
+            ],
+            "api": "initialize",
+            "parent": "transaction"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/verify/:reference",
+            "method": "GET",
+            "params": [],
+            "api": "verify",
+            "parent": "transaction",
+            "variables": [
+                {
+                    "key": "reference",
+                    "value": "in ipsum qui",
+                    "description": "(Required) The transaction reference to verify"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/timeline/:id_or_reference",
+            "method": "GET",
+            "params": [],
+            "api": "fetch_timeline",
+            "parent": "transaction",
+            "variables": [
+                {
+                    "key": "id_or_reference",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/totals",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "totals",
+            "parent": "transaction"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/export",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "export",
+            "parent": "transaction"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/charge_authorization",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "email",
+                    "description": "(Required) Customer's email address",
+                    "required": true
+                },
+                {
+                    "parameter": "amount",
+                    "description": "(Required) Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": true
+                },
+                {
+                    "parameter": "authorization_code",
+                    "description": "(Required) Valid authorization code to charge",
+                    "required": true
+                },
+                {
+                    "parameter": "reference",
+                    "description": "Unique transaction reference. Only -, ., = and alphanumeric characters allowed.",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "The transaction currency",
+                    "required": false
+                },
+                {
+                    "parameter": "metadata",
+                    "description": "Stringified JSON object of custom data",
+                    "required": false
+                },
+                {
+                    "parameter": "split_code",
+                    "description": "The split code of the transaction split",
+                    "required": false
+                },
+                {
+                    "parameter": "subaccount",
+                    "description": "The code for the subaccount that owns the payment",
+                    "required": false
+                },
+                {
+                    "parameter": "transaction_charge",
+                    "description": "A flat fee to charge the subaccount for a transaction. \nThis overrides the split percentage set when the subaccount was created",
+                    "required": false
+                },
+                {
+                    "parameter": "bearer",
+                    "description": "The beare of the transaction charge",
+                    "required": false
+                },
+                {
+                    "parameter": "queue",
+                    "description": "If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.",
+                    "required": false
+                }
+            ],
+            "api": "charge_authorization",
+            "parent": "transaction"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/check_authorization",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "email",
+                    "description": "(Required) Customer's email address",
+                    "required": true
+                },
+                {
+                    "parameter": "amount",
+                    "description": "(Required) Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": true
+                },
+                {
+                    "parameter": "authorization_code",
+                    "description": "Valid authorization code to charge",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "The transaction currency",
+                    "required": false
+                }
+            ],
+            "api": "check_authorization",
+            "parent": "transaction"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transaction/partial_debit",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "email",
+                    "description": "(Required) Customer's email address",
+                    "required": true
+                },
+                {
+                    "parameter": "amount",
+                    "description": "(Required) Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": true
+                },
+                {
+                    "parameter": "authorization_code",
+                    "description": "(Required) Valid authorization code to charge",
+                    "required": true
+                },
+                {
+                    "parameter": "currency",
+                    "description": "(Required) The transaction currency",
+                    "required": true
+                },
+                {
+                    "parameter": "reference",
+                    "description": "Unique transaction reference. Only -, ., = and alphanumeric characters allowed.",
+                    "required": false
+                },
+                {
+                    "parameter": "at_least",
+                    "description": "Minimum amount to charge",
+                    "required": false
+                }
+            ],
+            "api": "partial_debit",
+            "parent": "transaction"
+        }
+    ],
+    "split": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "split/:id",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "split",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "split/:id",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "name",
+                    "description": "Name of the transaction split",
+                    "required": false
+                },
+                {
+                    "parameter": "active",
+                    "description": "Toggle status of split. When true, the split is active, else it's inactive",
+                    "required": false
+                },
+                {
+                    "parameter": "bearer_type",
+                    "description": "This allows you specify how the transaction charge should be processed",
+                    "required": false
+                },
+                {
+                    "parameter": "bearer_subaccount",
+                    "description": "This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type",
+                    "required": false
+                }
+            ],
+            "api": "update",
+            "parent": "split",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "split",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "name",
+                    "description": "(Required) Name of the transaction split",
+                    "required": true
+                },
+                {
+                    "parameter": "type",
+                    "description": "(Required) The type of transaction split you want to create.",
+                    "required": true
+                },
+                {
+                    "parameter": "subaccounts",
+                    "description": "(Required) A list of object containing subaccount code and number of shares",
+                    "required": true
+                },
+                {
+                    "parameter": "subaccounts",
+                    "description": "(Required) A list of object containing subaccount code and number of shares",
+                    "required": true
+                },
+                {
+                    "parameter": "currency",
+                    "description": "(Required) The transaction currency",
+                    "required": true
+                },
+                {
+                    "parameter": "bearer_type",
+                    "description": "This allows you specify how the transaction charge should be processed",
+                    "required": false
+                },
+                {
+                    "parameter": "bearer_subaccount",
+                    "description": "This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "split"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "split",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "name",
+                    "required": false
+                },
+                {
+                    "parameter": "active",
+                    "required": false
+                },
+                {
+                    "parameter": "sort_by",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "required": false
+                },
+                {
+                    "parameter": "perPage",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "split"
+        }
+    ],
+    "customer": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "customer/:code",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "customer",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "customer/:code",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "first_name",
+                    "description": "Customer's first name",
+                    "required": false
+                },
+                {
+                    "parameter": "last_name",
+                    "description": "Customer's last name",
+                    "required": false
+                },
+                {
+                    "parameter": "phone",
+                    "description": "Customer's phone number",
+                    "required": false
+                },
+                {
+                    "parameter": "metadata",
+                    "description": "Stringified JSON object of custom data",
+                    "required": false
+                }
+            ],
+            "api": "update",
+            "parent": "customer",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "customer/:code/identification",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "type",
+                    "description": "(Required) Predefined types of identification.",
+                    "required": true
+                },
+                {
+                    "parameter": "country",
+                    "description": "(Required) Two-letter country code of identification issuer",
+                    "required": true
+                },
+                {
+                    "parameter": "bvn",
+                    "description": "(Required) Customer's Bank Verification Number",
+                    "required": true
+                },
+                {
+                    "parameter": "bank_code",
+                    "description": "(Required) You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank).",
+                    "required": true
+                },
+                {
+                    "parameter": "account_number",
+                    "description": "(Required) Customer's bank account number.",
+                    "required": true
+                },
+                {
+                    "parameter": "value",
+                    "description": "Customer's identification number. Required if type is bvn",
+                    "required": true
+                }
+            ],
+            "api": "validate",
+            "parent": "customer",
+            "variables": [
+                {
+                    "key": "code"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "customer",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "email",
+                    "description": "Customer's email address",
+                    "required": true
+                },
+                {
+                    "parameter": "first_name",
+                    "description": "Customer's first name",
+                    "required": false
+                },
+                {
+                    "parameter": "last_name",
+                    "description": "Customer's last name",
+                    "required": false
+                },
+                {
+                    "parameter": "phone",
+                    "description": "Customer's phone number",
+                    "required": false
+                },
+                {
+                    "parameter": "metadata",
+                    "description": "Stringified JSON object of custom data",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "customer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "customer",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "use_cursor",
+                    "required": false
+                },
+                {
+                    "parameter": "next",
+                    "required": false
+                },
+                {
+                    "parameter": "previous",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "required": false
+                },
+                {
+                    "parameter": "perPage",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "customer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "customer/set_risk_action",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "customer",
+                    "description": "(Required) Customer's code, or email address",
+                    "required": true
+                },
+                {
+                    "parameter": "risk_action",
+                    "description": "One of the possible risk actions [ default, allow, deny ]. allow to whitelist. \ndeny to blacklist. Customers start with a default risk action.\n",
+                    "required": false
+                }
+            ],
+            "api": "white/blacklist",
+            "parent": "customer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "customer/deactivate_authorization",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "authorization_code",
+                    "description": "(Required) Customer's authorization code to be deactivated",
+                    "required": true
+                }
+            ],
+            "api": "deactivate_authorization",
+            "parent": "customer"
+        }
+    ],
+    "dedicatedaccount": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dedicated_account/:account_id",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "dedicatedaccount",
+            "variables": [
+                {
+                    "key": "account_id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dedicated_account/:account_id",
+            "method": "DELETE",
+            "params": [],
+            "api": "deactivate",
+            "parent": "dedicatedaccount",
+            "variables": [
+                {
+                    "key": "account_id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dedicated_account",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "customer",
+                    "description": "(Required) Customer ID or code",
+                    "required": true
+                },
+                {
+                    "parameter": "preferred_bank",
+                    "description": "The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint",
+                    "required": false
+                },
+                {
+                    "parameter": "subaccount",
+                    "description": "Subaccount code of the account you want to split the transaction with",
+                    "required": false
+                },
+                {
+                    "parameter": "split_code",
+                    "description": "Split code consisting of the lists of accounts you want to split the transaction with",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "dedicatedaccount"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dedicated_account",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "account_number",
+                    "required": false
+                },
+                {
+                    "parameter": "customer",
+                    "required": false
+                },
+                {
+                    "parameter": "active",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "required": false
+                },
+                {
+                    "parameter": "provider_slug",
+                    "required": false
+                },
+                {
+                    "parameter": "bank_id",
+                    "required": false
+                },
+                {
+                    "parameter": "perPage",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "dedicatedaccount"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dedicated_account/available_providers",
+            "method": "GET",
+            "params": [],
+            "api": "providers",
+            "parent": "dedicatedaccount"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dedicated_account/split",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "account_number",
+                    "description": "(Required) Valid Dedicated virtual account",
+                    "required": true
+                },
+                {
+                    "parameter": "subaccount",
+                    "description": "Subaccount code of the account you want to split the transaction with",
+                    "required": false
+                },
+                {
+                    "parameter": "split_code",
+                    "description": "Split code consisting of the lists of accounts you want to split the transaction with",
+                    "required": false
+                }
+            ],
+            "api": "split",
+            "parent": "dedicatedaccount"
+        }
+    ],
+    "subaccount": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "subaccount/:code",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "subaccount",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "subaccount/:code",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "business_name",
+                    "description": "Name of business for subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "settlement_bank",
+                    "description": "Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.",
+                    "required": false
+                },
+                {
+                    "parameter": "account_number",
+                    "description": "Bank account number",
+                    "required": false
+                },
+                {
+                    "parameter": "active",
+                    "description": "Activate or deactivate a subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "percentage_charge",
+                    "description": "Customer's phone number",
+                    "required": false
+                },
+                {
+                    "parameter": "description",
+                    "description": "A description for this subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "primary_contact_email",
+                    "description": "A contact email for the subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "primary_contact_name",
+                    "description": "The name of the contact person for this subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "primary_contact_phone",
+                    "description": "A phone number to call for this subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "metadata",
+                    "description": "Stringified JSON object of custom data",
+                    "required": false
+                }
+            ],
+            "api": "update",
+            "parent": "subaccount",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "subaccount",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "business_name",
+                    "description": "(Required) Name of business for subaccount",
+                    "required": true
+                },
+                {
+                    "parameter": "settlement_bank",
+                    "description": "(Required) Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.",
+                    "required": true
+                },
+                {
+                    "parameter": "account_number",
+                    "description": "(Required) Bank account number",
+                    "required": true
+                },
+                {
+                    "parameter": "percentage_charge",
+                    "description": "(Required) Customer's phone number",
+                    "required": true
+                },
+                {
+                    "parameter": "description",
+                    "description": "A description for this subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "primary_contact_email",
+                    "description": "A contact email for the subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "primary_contact_name",
+                    "description": "The name of the contact person for this subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "primary_contact_phone",
+                    "description": "A phone number to call for this subaccount",
+                    "required": false
+                },
+                {
+                    "parameter": "metadata",
+                    "description": "Stringified JSON object of custom data",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "subaccount"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "subaccount",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "subaccount"
+        }
+    ],
+    "plan": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "plan/:code",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "plan",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "plan/:code",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "name",
+                    "description": "Name of plan",
+                    "required": false
+                },
+                {
+                    "parameter": "amount",
+                    "description": "Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": false
+                },
+                {
+                    "parameter": "interval",
+                    "description": "Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually",
+                    "required": false
+                },
+                {
+                    "parameter": "description",
+                    "description": "A description for this plan",
+                    "required": false
+                },
+                {
+                    "parameter": "send_invoices",
+                    "description": "Set to false if you don't want invoices to be sent to your customers",
+                    "required": false
+                },
+                {
+                    "parameter": "send_sms",
+                    "description": "Set to false if you don't want text messages to be sent to your customers",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD",
+                    "required": false
+                },
+                {
+                    "parameter": "invoice_limit",
+                    "description": "Number of invoices to raise during subscription to this plan. \nCan be overridden by specifying an invoice_limit while subscribing.",
+                    "required": false
+                }
+            ],
+            "api": "update",
+            "parent": "plan",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "plan",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "name",
+                    "description": "(Required) Name of plan",
+                    "required": true
+                },
+                {
+                    "parameter": "amount",
+                    "description": "(Required) Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": true
+                },
+                {
+                    "parameter": "interval",
+                    "description": "(Required) Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually",
+                    "required": true
+                },
+                {
+                    "parameter": "description",
+                    "description": "A description for this plan",
+                    "required": false
+                },
+                {
+                    "parameter": "send_invoices",
+                    "description": "Set to false if you don't want invoices to be sent to your customers",
+                    "required": false
+                },
+                {
+                    "parameter": "send_sms",
+                    "description": "Set to false if you don't want text messages to be sent to your customers",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD",
+                    "required": false
+                },
+                {
+                    "parameter": "invoice_limit",
+                    "description": "Number of invoices to raise during subscription to this plan. \nCan be overridden by specifying an invoice_limit while subscribing.",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "plan"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "plan",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "interval",
+                    "description": "Specify interval of the plan",
+                    "required": false
+                },
+                {
+                    "parameter": "amount",
+                    "description": "The amount on the plans to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "plan"
+        }
+    ],
+    "subscription": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "subscription/:code",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "subscription",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "subscription",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "customer",
+                    "description": "(Required) Customer's email address or customer code",
+                    "required": true
+                },
+                {
+                    "parameter": "plan",
+                    "description": "(Required) Plan code",
+                    "required": true
+                },
+                {
+                    "parameter": "authorization",
+                    "description": "If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here. \nIf this is not supplied, the customer's most recent authorization would be used",
+                    "required": false
+                },
+                {
+                    "parameter": "start_date",
+                    "description": "Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "subscription"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "subscription",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "plan",
+                    "description": "Plan ID",
+                    "required": false
+                },
+                {
+                    "parameter": "customer",
+                    "description": "Customer ID",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "subscription"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "subscription/disable",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "code",
+                    "description": "(Required) Subscription code",
+                    "required": true
+                },
+                {
+                    "parameter": "token",
+                    "description": "(Required) Email token",
+                    "required": true
+                },
+                {
+                    "parameter": "authorization",
+                    "description": "(Required) ",
+                    "required": true
+                }
+            ],
+            "api": "disable",
+            "parent": "subscription"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "subscription/enable",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "code",
+                    "description": "(Required) Subscription code",
+                    "required": true
+                },
+                {
+                    "parameter": "token",
+                    "description": "(Required) Email token",
+                    "required": true
+                },
+                {
+                    "parameter": "authorization",
+                    "description": "(Required) ",
+                    "required": true
+                }
+            ],
+            "api": "enable",
+            "parent": "subscription"
+        }
+    ],
+    "product": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "product/:id",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "product",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "product/:id",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "name",
+                    "description": "Name of product",
+                    "required": false
+                },
+                {
+                    "parameter": "description",
+                    "description": "The description of the product",
+                    "required": false
+                },
+                {
+                    "parameter": "price",
+                    "description": "Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD",
+                    "required": false
+                },
+                {
+                    "parameter": "limited",
+                    "description": "Set to true if the product has limited stock. Leave as false if the product has unlimited stock",
+                    "required": false
+                },
+                {
+                    "parameter": "quantity",
+                    "description": "Number of products in stock. Use if limited is true",
+                    "required": false
+                }
+            ],
+            "api": "update",
+            "parent": "product",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "product/:id",
+            "method": "DELETE",
+            "params": [],
+            "api": "delete",
+            "parent": "product",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "product",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "name",
+                    "description": "(Required) Name of product",
+                    "required": true
+                },
+                {
+                    "parameter": "description",
+                    "description": "(Required) The description of the product",
+                    "required": true
+                },
+                {
+                    "parameter": "price",
+                    "description": "(Required) Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": true
+                },
+                {
+                    "parameter": "currency",
+                    "description": "(Required) Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD",
+                    "required": true
+                },
+                {
+                    "parameter": "limited",
+                    "description": "Set to true if the product has limited stock. Leave as false if the product has unlimited stock",
+                    "required": false
+                },
+                {
+                    "parameter": "quantity",
+                    "description": "Number of products in stock. Use if limited is true",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "product"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "product",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "required": false
+                },
+                {
+                    "parameter": "active",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "product"
+        }
+    ],
+    "page": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "page/:id",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "page",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "page/:id",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "name",
+                    "description": "Name of page",
+                    "required": false
+                },
+                {
+                    "parameter": "description",
+                    "description": "The description of the page",
+                    "required": false
+                },
+                {
+                    "parameter": "amount",
+                    "description": "Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": false
+                },
+                {
+                    "parameter": "active",
+                    "description": "Set to false to deactivate page url",
+                    "required": false
+                }
+            ],
+            "api": "update",
+            "parent": "page",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "page/:id/product",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "product",
+                    "description": "(Required) IDs of all products to add to a page",
+                    "required": true
+                },
+                {
+                    "parameter": "product",
+                    "description": "(Required) IDs of all products to add to a page",
+                    "required": true
+                }
+            ],
+            "api": "add_products",
+            "parent": "page",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "page",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "name",
+                    "description": "(Required) Name of page",
+                    "required": true
+                },
+                {
+                    "parameter": "description",
+                    "description": "The description of the page",
+                    "required": false
+                },
+                {
+                    "parameter": "amount",
+                    "description": "Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": false
+                },
+                {
+                    "parameter": "slug",
+                    "description": "URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]",
+                    "required": false
+                },
+                {
+                    "parameter": "metadata",
+                    "description": "Stringified JSON object of custom data",
+                    "required": false
+                },
+                {
+                    "parameter": "redirect_url",
+                    "description": "If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "page"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "page",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "page"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "page/check_slug_availability/:slug",
+            "method": "GET",
+            "params": [],
+            "api": "check_slug_availability",
+            "parent": "page",
+            "variables": [
+                {
+                    "key": "slug",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        }
+    ],
+    "paymentrequest": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "paymentrequest/:id",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "paymentrequest",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "paymentrequest/:id",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "customer",
+                    "description": "Customer id or code",
+                    "required": false
+                },
+                {
+                    "parameter": "amount",
+                    "description": "Payment request amount. Only useful if line items and tax values are ignored. \nThe endpoint will throw a friendly warning if neither is available.",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN",
+                    "required": false
+                },
+                {
+                    "parameter": "due_date",
+                    "description": "ISO 8601 representation of request due date",
+                    "required": false
+                },
+                {
+                    "parameter": "description",
+                    "description": "A short description of the payment request",
+                    "required": false
+                },
+                {
+                    "parameter": "send_notification",
+                    "description": "Indicates whether Paystack sends an email notification to customer. Defaults to true",
+                    "required": false
+                },
+                {
+                    "parameter": "draft",
+                    "description": "Indicate if request should be saved as draft. Defaults to false and overrides send_notification",
+                    "required": false
+                },
+                {
+                    "parameter": "has_invoice",
+                    "description": "Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided) \neven if there are no line_items or tax passed",
+                    "required": false
+                },
+                {
+                    "parameter": "invoice_number",
+                    "description": "Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help \noverride whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.",
+                    "required": false
+                }
+            ],
+            "api": "update",
+            "parent": "paymentrequest",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "paymentrequest",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "customer",
+                    "description": "(Required) Customer id or code",
+                    "required": true
+                },
+                {
+                    "parameter": "amount",
+                    "description": "Payment request amount. Only useful if line items and tax values are ignored. \nThe endpoint will throw a friendly warning if neither is available.",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN",
+                    "required": false
+                },
+                {
+                    "parameter": "due_date",
+                    "description": "ISO 8601 representation of request due date",
+                    "required": false
+                },
+                {
+                    "parameter": "description",
+                    "description": "A short description of the payment request",
+                    "required": false
+                },
+                {
+                    "parameter": "send_notification",
+                    "description": "Indicates whether Paystack sends an email notification to customer. Defaults to true",
+                    "required": false
+                },
+                {
+                    "parameter": "draft",
+                    "description": "Indicate if request should be saved as draft. Defaults to false and overrides send_notification",
+                    "required": false
+                },
+                {
+                    "parameter": "has_invoice",
+                    "description": "Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided) \neven if there are no line_items or tax passed",
+                    "required": false
+                },
+                {
+                    "parameter": "invoice_number",
+                    "description": "Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help \noverride whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.",
+                    "required": false
+                },
+                {
+                    "parameter": "split_code",
+                    "description": "The split code of the transaction split.",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "paymentrequest"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "paymentrequest",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "customer",
+                    "description": "Customer ID",
+                    "required": false
+                },
+                {
+                    "parameter": "status",
+                    "description": "Invoice status to filter",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "If your integration supports more than one currency, choose the one to filter",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "paymentrequest"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "paymentrequest/verify/:id",
+            "method": "GET",
+            "params": [],
+            "api": "verify",
+            "parent": "paymentrequest",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "paymentrequest/notify/:id",
+            "method": "POST",
+            "params": [],
+            "api": "send_notification",
+            "parent": "paymentrequest",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "paymentrequest/totals",
+            "method": "GET",
+            "params": [],
+            "api": "totals",
+            "parent": "paymentrequest"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "paymentrequest/finalize/:id",
+            "method": "POST",
+            "params": [],
+            "api": "finalize",
+            "parent": "paymentrequest",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "paymentrequest/archive/:id",
+            "method": "POST",
+            "params": [],
+            "api": "archive",
+            "parent": "paymentrequest",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        }
+    ],
+    "settlement": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "settlement",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "required": false
+                }
+            ],
+            "api": "fetch",
+            "parent": "settlement"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "settlement/:id/transaction",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "required": false
+                }
+            ],
+            "api": "transactions",
+            "parent": "settlement",
+            "variables": [
+                {
+                    "key": "id"
+                }
+            ]
+        }
+    ],
+    "transferrecipient": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transferrecipient/:code",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "transferrecipient",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Transfer recipient code"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transferrecipient/:code",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "name",
+                    "description": "Recipient's name",
+                    "required": false
+                },
+                {
+                    "parameter": "email",
+                    "description": "Recipient's email address",
+                    "required": false
+                }
+            ],
+            "api": "update",
+            "parent": "transferrecipient",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Transfer recipient code"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transferrecipient/:code",
+            "method": "DELETE",
+            "params": [],
+            "api": "delete",
+            "parent": "transferrecipient",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Transfer recipient code"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transferrecipient",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "type",
+                    "description": "(Required) Recipient Type (Only nuban at this time)",
+                    "required": true
+                },
+                {
+                    "parameter": "name",
+                    "description": "(Required) Recipient's name",
+                    "required": true
+                },
+                {
+                    "parameter": "account_number",
+                    "description": "(Required) Recipient's bank account number",
+                    "required": true
+                },
+                {
+                    "parameter": "bank_code",
+                    "description": "(Required) Recipient's bank code. You can get the list of Bank Codes by calling the List Banks endpoint",
+                    "required": true
+                },
+                {
+                    "parameter": "description",
+                    "description": "A description for this recipient",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "Currency for the account receiving the transfer",
+                    "required": false
+                },
+                {
+                    "parameter": "authorization_code",
+                    "description": "An authorization code from a previous transaction",
+                    "required": false
+                },
+                {
+                    "parameter": "metadata",
+                    "description": "Stringified JSON object of custom data",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "transferrecipient"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transferrecipient",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "transferrecipient"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transferrecipient/bulk",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "batch",
+                    "description": "(Required) A list of transfer recipient object. Each object should contain type, name, and bank_code. \nAny Create Transfer Recipient param can also be passed.",
+                    "required": true
+                },
+                {
+                    "parameter": "batch",
+                    "description": "(Required) A list of transfer recipient object. Each object should contain type, name, and bank_code. \nAny Create Transfer Recipient param can also be passed.",
+                    "required": true
+                }
+            ],
+            "api": "bulk",
+            "parent": "transferrecipient"
+        }
+    ],
+    "transfer": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "source",
+                    "description": "(Required) Where should we transfer from? Only balance is allowed for now",
+                    "required": true
+                },
+                {
+                    "parameter": "amount",
+                    "description": "(Required) Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.",
+                    "required": true
+                },
+                {
+                    "parameter": "recipient",
+                    "description": "(Required) The transfer recipient's code",
+                    "required": true
+                },
+                {
+                    "parameter": "reason",
+                    "description": "The reason or narration for the transfer.",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "Specify the currency of the transfer. Defaults to NGN.",
+                    "required": false
+                },
+                {
+                    "parameter": "reference",
+                    "description": "If specified, the field should be a unique identifier (in lowercase) for the object. \nOnly -,_ and alphanumeric characters are allowed.",
+                    "required": false
+                }
+            ],
+            "api": "initiate",
+            "parent": "transfer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "status",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "transfer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer/finalize_transfer",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "transfer_code",
+                    "description": "(Required) The transfer code you want to finalize",
+                    "required": true
+                },
+                {
+                    "parameter": "otp",
+                    "description": "(Required) OTP sent to business phone to verify transfer",
+                    "required": true
+                }
+            ],
+            "api": "finalize",
+            "parent": "transfer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer/bulk",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "source",
+                    "description": "Where should we transfer from? Only balance is allowed for now",
+                    "required": false
+                },
+                {
+                    "parameter": "transfers",
+                    "description": "A list of transfer object. Each object should contain amount, recipient, and reference",
+                    "required": false
+                },
+                {
+                    "parameter": "transfers",
+                    "description": "A list of transfer object. Each object should contain amount, recipient, and reference",
+                    "required": false
+                }
+            ],
+            "api": "initiate_bulk",
+            "parent": "transfer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer/:code",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "transfer",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Transfer code"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer/verify/:reference",
+            "method": "GET",
+            "params": [],
+            "api": "verify",
+            "parent": "transfer",
+            "variables": [
+                {
+                    "key": "reference",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer/export",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "status",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "export",
+            "parent": "transfer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer/resend_otp",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "transfer_code",
+                    "description": "(Required) The transfer code that requires an OTP validation",
+                    "required": true
+                },
+                {
+                    "parameter": "reason",
+                    "description": "(Required) Either resend_otp or transfer",
+                    "required": true
+                }
+            ],
+            "api": "resend_otp_for",
+            "parent": "transfer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer/disable_otp",
+            "method": "POST",
+            "params": [],
+            "api": "disable_otp_requirement_for",
+            "parent": "transfer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer/disable_otp_finalize",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "otp",
+                    "description": "(Required) OTP sent to business phone to verify disabling OTP requirement",
+                    "required": true
+                }
+            ],
+            "api": "finalize_disabling_of_otp_requirement_for",
+            "parent": "transfer"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "transfer/enable_otp",
+            "method": "POST",
+            "params": [],
+            "api": "enable_otp_requirement_for",
+            "parent": "transfer"
+        }
+    ],
+    "balance": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "balance",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "balance"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "balance/ledger",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "ledger",
+            "parent": "balance"
+        }
+    ],
+    "charge": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "charge",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "email",
+                    "description": "(Required) Customer's email address",
+                    "required": true
+                },
+                {
+                    "parameter": "amount",
+                    "description": "(Required) Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": true
+                },
+                {
+                    "parameter": "currency",
+                    "description": "The transaction currency",
+                    "required": false
+                },
+                {
+                    "parameter": "reference",
+                    "description": "Unique transaction reference. Only -, ., = and alphanumeric characters allowed.",
+                    "required": false
+                },
+                {
+                    "parameter": "metadata",
+                    "description": "Stringified JSON object of custom data",
+                    "required": false
+                },
+                {
+                    "parameter": "split_code",
+                    "description": "The split code of the transaction split",
+                    "required": false
+                },
+                {
+                    "parameter": "subaccount",
+                    "description": "The code for the subaccount that owns the payment",
+                    "required": false
+                },
+                {
+                    "parameter": "transaction_charge",
+                    "description": "A flat fee to charge the subaccount for a transaction. \nThis overrides the split percentage set when the subaccount was created",
+                    "required": false
+                },
+                {
+                    "parameter": "bearer",
+                    "description": "The bearer of the transaction charge",
+                    "required": false
+                },
+                {
+                    "parameter": "ussd",
+                    "description": "USSD type to charge (don't send if charging an authorization code, bank or card)",
+                    "required": false
+                },
+                {
+                    "parameter": "mobile_money",
+                    "description": "Mobile details (don't send if charging an authorization code, bank or card)",
+                    "required": false
+                },
+                {
+                    "parameter": "authorization_code",
+                    "description": "An authorization code to charge (don't send if charging a bank account)",
+                    "required": false
+                },
+                {
+                    "parameter": "bank",
+                    "description": "Bank account to charge (don't send if charging an authorization code)",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "charge"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "charge/submit_pin",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "pin",
+                    "description": "(Required) Customer's PIN",
+                    "required": true
+                },
+                {
+                    "parameter": "reference",
+                    "description": "(Required) Transaction reference that requires the PIN",
+                    "required": true
+                }
+            ],
+            "api": "submit_pin",
+            "parent": "charge"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "charge/submit_otp",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "otp",
+                    "description": "(Required) Customer's OTP",
+                    "required": true
+                },
+                {
+                    "parameter": "reference",
+                    "description": "(Required) The reference of the ongoing transaction",
+                    "required": true
+                }
+            ],
+            "api": "submit_otp",
+            "parent": "charge"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "charge/submit_phone",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "phone",
+                    "description": "(Required) Customer's mobile number",
+                    "required": true
+                },
+                {
+                    "parameter": "reference",
+                    "description": "(Required) The reference of the ongoing transaction",
+                    "required": true
+                }
+            ],
+            "api": "submit_phone",
+            "parent": "charge"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "charge/submit_birthday",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "birthday",
+                    "description": "(Required) Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21",
+                    "required": true
+                },
+                {
+                    "parameter": "reference",
+                    "description": "(Required) The reference of the ongoing transaction",
+                    "required": true
+                }
+            ],
+            "api": "submit_birthday",
+            "parent": "charge"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "charge/submit_address",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "address",
+                    "description": "(Required) Customer's address",
+                    "required": true
+                },
+                {
+                    "parameter": "reference",
+                    "description": "(Required) The reference of the ongoing transaction",
+                    "required": true
+                },
+                {
+                    "parameter": "city",
+                    "description": "(Required) Customer's city",
+                    "required": true
+                },
+                {
+                    "parameter": "state",
+                    "description": "(Required) Customer's state",
+                    "required": true
+                },
+                {
+                    "parameter": "zipcode",
+                    "description": "(Required) Customer's zipcode",
+                    "required": true
+                }
+            ],
+            "api": "submit_address",
+            "parent": "charge"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "charge/:reference",
+            "method": "GET",
+            "params": [],
+            "api": "check_pending",
+            "parent": "charge",
+            "variables": [
+                {
+                    "key": "reference",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        }
+    ],
+    "bulkcharge": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "bulkcharge/:code",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "bulkcharge",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Batch code"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "bulkcharge/:code/charges",
+            "method": "GET",
+            "params": [],
+            "api": "fetch_charges",
+            "parent": "bulkcharge",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Batch code"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "bulkcharge",
+            "method": "POST",
+            "params": [],
+            "api": "initiate",
+            "parent": "bulkcharge"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "bulkcharge",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "bulkcharge"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "bulkcharge/pause/:code",
+            "method": "GET",
+            "params": [],
+            "api": "pause",
+            "parent": "bulkcharge",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Batch code"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "bulkcharge/resume/:code",
+            "method": "GET",
+            "params": [],
+            "api": "resume",
+            "parent": "bulkcharge",
+            "variables": [
+                {
+                    "key": "code",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Batch code"
+                }
+            ]
+        }
+    ],
+    "paymentsessiontimeout": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "integration/payment_session_timeout",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "paymentsessiontimeout"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "integration/payment_session_timeout",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "timeout",
+                    "description": "(Required) Time in seconds before a transaction becomes invalid",
+                    "required": true
+                }
+            ],
+            "api": "update",
+            "parent": "paymentsessiontimeout"
+        }
+    ],
+    "refund": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "refund",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "transaction",
+                    "description": "(Required) Transaction reference or id",
+                    "required": true
+                },
+                {
+                    "parameter": "amount",
+                    "description": "Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer. \nAmount cannot be more than the original transaction amount",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "description": "Three-letter ISO currency",
+                    "required": false
+                },
+                {
+                    "parameter": "customer_note",
+                    "description": "Customer reason",
+                    "required": false
+                },
+                {
+                    "parameter": "merchant_note",
+                    "description": "Merchant reason",
+                    "required": false
+                }
+            ],
+            "api": "create",
+            "parent": "refund"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "refund",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "refund"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "refund/:id",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "refund",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        }
+    ],
+    "dispute": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dispute/:id",
+            "method": "GET",
+            "params": [],
+            "api": "fetch",
+            "parent": "dispute",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Dispute ID"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dispute/:id",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "refund_amount",
+                    "description": "(Required) The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": true
+                },
+                {
+                    "parameter": "uploaded_filename",
+                    "description": "Filename of attachment returned via response from the Dispute upload URL",
+                    "required": false
+                }
+            ],
+            "api": "update",
+            "parent": "dispute",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Dispute ID"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dispute/:id/upload_url",
+            "method": "GET",
+            "params": [],
+            "api": "get_upload_url",
+            "parent": "dispute",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Dispute ID"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dispute/:id/resolve",
+            "method": "PUT",
+            "params": [
+                {
+                    "parameter": "resolution",
+                    "description": "(Required) Dispute resolution.",
+                    "required": true
+                },
+                {
+                    "parameter": "message",
+                    "description": "(Required) Reason for resolving",
+                    "required": true
+                },
+                {
+                    "parameter": "refund_amount",
+                    "description": "(Required) The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR",
+                    "required": true
+                },
+                {
+                    "parameter": "uploaded_filename",
+                    "description": "(Required) Filename of attachment returned via response from the Dispute upload URL",
+                    "required": true
+                },
+                {
+                    "parameter": "evidence",
+                    "description": "Evidence Id for fraud claims",
+                    "required": false
+                }
+            ],
+            "api": "resolve_a",
+            "parent": "dispute",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Dispute ID"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dispute/:id/evidence",
+            "method": "POST",
+            "params": [
+                {
+                    "parameter": "customer_email",
+                    "description": "(Required) Customer email",
+                    "required": true
+                },
+                {
+                    "parameter": "customer_name",
+                    "description": "(Required) Customer name",
+                    "required": true
+                },
+                {
+                    "parameter": "customer_phone",
+                    "description": "(Required) Customer mobile number",
+                    "required": true
+                },
+                {
+                    "parameter": "service_details",
+                    "description": "(Required) Details of service offered",
+                    "required": true
+                },
+                {
+                    "parameter": "delivery_address",
+                    "description": "Delivery address",
+                    "required": false
+                },
+                {
+                    "parameter": "delivery_date",
+                    "description": "ISO 8601 representation of delivery date (YYYY-MM-DD)",
+                    "required": false
+                }
+            ],
+            "api": "add_evidence",
+            "parent": "dispute",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Dispute ID"
+                }
+            ]
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dispute",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "status",
+                    "description": "Dispute Status.",
+                    "required": false
+                },
+                {
+                    "parameter": "transaction",
+                    "description": "Transaction ID",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "dispute"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dispute/export",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "perPage",
+                    "description": "Number of records to fetch per page",
+                    "required": false
+                },
+                {
+                    "parameter": "page",
+                    "description": "The section to retrieve",
+                    "required": false
+                },
+                {
+                    "parameter": "status",
+                    "required": false
+                },
+                {
+                    "parameter": "from",
+                    "description": "The start date",
+                    "required": false
+                },
+                {
+                    "parameter": "to",
+                    "description": "The end date",
+                    "required": false
+                }
+            ],
+            "api": "export",
+            "parent": "dispute"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "dispute/transaction/:id",
+            "method": "GET",
+            "params": [],
+            "api": "list_transaction",
+            "parent": "dispute",
+            "variables": [
+                {
+                    "key": "id",
+                    "value": "in ipsum qui",
+                    "description": "(Required) Transaction ID"
+                }
+            ]
+        }
+    ],
+    "bank": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "bank",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "country",
+                    "required": false
+                },
+                {
+                    "parameter": "pay_with_bank_transfer",
+                    "required": false
+                },
+                {
+                    "parameter": "use_cursor",
+                    "required": false
+                },
+                {
+                    "parameter": "perPage",
+                    "required": false
+                },
+                {
+                    "parameter": "next",
+                    "required": false
+                },
+                {
+                    "parameter": "previous",
+                    "required": false
+                },
+                {
+                    "parameter": "gateway",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "bank"
+        },
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "bank/resolve",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "account_number",
+                    "required": false
+                },
+                {
+                    "parameter": "bank_code",
+                    "required": false
+                }
+            ],
+            "api": "resolve",
+            "parent": "bank"
+        }
+    ],
+    "card": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "decision/bin/:bin",
+            "method": "GET",
+            "params": [],
+            "api": "resolve",
+            "parent": "card",
+            "variables": [
+                {
+                    "key": "bin",
+                    "value": "in ipsum qui",
+                    "description": "(Required) "
+                }
+            ]
+        }
+    ],
+    "country": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "country",
+            "method": "GET",
+            "params": [],
+            "api": "list",
+            "parent": "country"
+        }
+    ],
+    "avs": [
+        {
+            "baseUrl": "https://api.paystack.co/",
+            "path": "address_verification/states",
+            "method": "GET",
+            "params": [
+                {
+                    "parameter": "type",
+                    "required": false
+                },
+                {
+                    "parameter": "country",
+                    "required": false
+                },
+                {
+                    "parameter": "currency",
+                    "required": false
+                }
+            ],
+            "api": "list",
+            "parent": "avs"
+        }
+    ]
+}
