@@ -7,3 +7,7 @@ Clean UP
  Check for missing parameters, search `"params": []`
 
  Remove BVN commands
+
+  oclif pack tarballs --targets=linux-arm
+
+  Notarize mac package
