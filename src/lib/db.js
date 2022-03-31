@@ -8,6 +8,12 @@ const db = low(adapter)
 db.defaults({token: '', user: {}, selected_integration: {}}).write()
 
 module.exports = {
+  clear: function(){
+    db.set('token','').write();
+    db.set('token_expiry', Number(Date.now())/1000).write();
+    db.set('user', {}).write();
+    db.set('selected_integration', {}).write();
+  },
   write: function (key, value) {
     db.set(key, value).write()
   },

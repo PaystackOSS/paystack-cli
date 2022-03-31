@@ -13,7 +13,7 @@ class IntegrationCommand extends Command {
     let selected_integration = db.read('selected_integration.id')
     let user = db.read('user.id')
     if (!selected_integration || !user) {
-      this.error("You're not signed in, please run the `login` command before you begin")
+      this.error("You're not signed in, please run the `paystack login` command before you begin")
     }
     let schema = helpers.findSchema(key, args.endpoint, flags)
     if(!schema){

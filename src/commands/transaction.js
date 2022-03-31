@@ -14,7 +14,7 @@ class TransactionCommand extends Command {
     let selected_integration = db.read('selected_integration.id')
     let user = db.read('user.id')
     if (!selected_integration || !user) {
-      this.error("You're not signed in, please run the `login` command before you begin")
+      this.error("You're not signed in, please run the `paystack login` command before you begin")
     }
     let token = ''
       let expiry = parseInt(db.read('token_expiry'), 10) * 1000

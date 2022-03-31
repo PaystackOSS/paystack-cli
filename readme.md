@@ -6,7 +6,7 @@ $ npm install -g @paystack-oss/dev-cli
 $ paystack COMMAND
 running command...
 $ paystack (-v|--version|version)
-@paystack-oss/dev-cli/1.0.0-nightly.0 darwin-x64 node-v16.14.0
+@paystack-oss/dev-cli/1.0.0-nightly.0 darwin-x64 node-v12.18.1
 $ paystack --help [COMMAND]
 USAGE
   $ paystack COMMAND
@@ -34,6 +34,8 @@ USAGE
 * [`paystack integration ENDPOINT`](#paystack-integration-endpoint)
 * [`paystack invoice ENDPOINT`](#paystack-invoice-endpoint)
 * [`paystack login`](#paystack-login)
+* [`paystack logout`](#paystack-logout)
+* [`paystack open [PAGE]`](#paystack-open-page)
 * [`paystack page ENDPOINT`](#paystack-page-endpoint)
 * [`paystack paymentrequest ENDPOINT`](#paystack-paymentrequest-endpoint)
 * [`paystack paymentsessiontimeout ENDPOINT`](#paystack-paymentsessiontimeout-endpoint)
@@ -52,6 +54,7 @@ USAGE
 * [`paystack verifications ENDPOINT`](#paystack-verifications-endpoint)
 * [`paystack version`](#paystack-version)
 * [`paystack webhook [SUBCOMMAND]`](#paystack-webhook-subcommand)
+* [`paystack whoami`](#paystack-whoami)
 
 ## `paystack autocomplete [SHELL]`
 
@@ -398,6 +401,28 @@ USAGE
 ```
 
 _See code: [src/commands/login.js](https://github.com/PaystackOSS/paystack-cli/blob/v1.0.0-nightly.0/src/commands/login.js)_
+
+## `paystack logout`
+
+Open Paystack docs, API reference or dashboard
+
+```
+USAGE
+  $ paystack logout
+```
+
+_See code: [src/commands/logout.js](https://github.com/PaystackOSS/paystack-cli/blob/v1.0.0-nightly.0/src/commands/logout.js)_
+
+## `paystack open [PAGE]`
+
+Open Paystack docs, API reference or dashboard
+
+```
+USAGE
+  $ paystack open [PAGE]
+```
+
+_See code: [src/commands/open.js](https://github.com/PaystackOSS/paystack-cli/blob/v1.0.0-nightly.0/src/commands/open.js)_
 
 ## `paystack page ENDPOINT`
 
@@ -814,4 +839,15 @@ OPTIONS
 ```
 
 _See code: [src/commands/webhook.js](https://github.com/PaystackOSS/paystack-cli/blob/v1.0.0-nightly.0/src/commands/webhook.js)_
+
+## `paystack whoami`
+
+Display the current logged in user
+
+```
+USAGE
+  $ paystack whoami
+```
+
+_See code: [src/commands/whoami.js](https://github.com/PaystackOSS/paystack-cli/blob/v1.0.0-nightly.0/src/commands/whoami.js)_
 <!-- commandsstop -->
