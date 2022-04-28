@@ -3,10 +3,12 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
 /* eslint-disable unicorn/filename-case */
-
+const HttpsProxyAgent = require("https-proxy-agent");
+const httpsAgent = new HttpsProxyAgent({host: "192.168.100.54", port: "9090"})
 const axios = require('axios')
 const helpers = require('./helpers')
 const db = require('./db')
+const pjson = require('pjson');
 const crypto = require('crypto')
 const webhookSamples = require('./paystack/webhooks')
 function selectIntegration(integrations, token) {
@@ -19,11 +21,16 @@ function selectIntegration(integrations, token) {
     })
     let integration = helpers.prompt(promptMessage + '\nEnter the corresponding number - ')
 
-    axios.post('https://api.paystack.co/user/switch_integration', { integration: integrations[parseInt(integration, 10) - 1].id }, { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true } }).then(() => {
+    axios.post('https://api.paystack.co/user/switch_integration', { integration: integrations[parseInt(integration, 10) - 1].id }, {httpsAgent, headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true,  'User-Agent':`Paystack-CLI v${pjson.version}` } }).then((response) => {
+      console.log(response)
       resolve(integrations[parseInt(integration, 10) - 1])
     }).catch(error => {
-      console.error(error.response.data)
-      reject(error)
+      if(error.response){
+        console.error(error.response.data)
+        return reject(error.response.data)
+      }
+     
+     console.error(error);
     })
   })
 }
@@ -90,8 +97,10 @@ function setWebhook(url, token, integration, domain = 'test') {
     let headers = {
       Authorization: 'Bearer ' + token,
       'jwt-auth': true,
+      'User-Agent':`Paystack-CLI v${pjson.version}`
     }
-    axios.put('https://api.paystack.co/integration/webhooks', data, { headers }).then(resp => {
+    axios.put('https://api.paystack.co/integration/webhooks', data, { httpsAgent, headers }).then(resp => {
+      console.log(resp);
       resolve(resp.data.message)
     }).catch(error => {
       console.log(error.response.data)
@@ -102,7 +111,8 @@ function setWebhook(url, token, integration, domain = 'test') {
 
 function getKeys(token, type = 'secret', domain = 'test') {
   return new Promise((resolve, reject) => {
-    axios.get('https://api.paystack.co/integration/keys', { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true } }).then(response => {
+    axios.get('https://api.paystack.co/integration/keys', {httpsAgent, headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true,  'User-Agent':`Paystack-CLI v${pjson.version}` } }).then(response => {
+      console.log(response);
       let key = {};
       let keys = response.data.data;
       if (keys.length) {
@@ -157,12 +167,15 @@ function pingWebhook(flags) {
       helpers.infoLog(`Sending sample ${event} event payload to ${uri}`)
       axios.post(uri, eventObject,
         {
+          httpsAgent,
           headers: {
             'x-paystack-signature': hash,
+            'User-Agent':`Paystack-CLI v${pjson.version}`
           },
         },
 
       ).then(response => {
+        console.log(response);
         resolve({
           code: response.status,
           text: response.statusText,
@@ -196,11 +209,14 @@ function getIntegration(id, token) {
   return new Promise((resolve, reject) => {
     axios.get('https://api.paystack.co/integration/' + id,
       {
+        httpsAgent,
         headers: {
           Authorization: 'Bearer ' + token,
           'jwt-auth': true,
+          'User-Agent':`Paystack-CLI v${pjson.version}`
         },
       }).then(response => {
+        console.log(response);
         resolve(response.data.data)
       }).catch(error => {
         if (error.response) {
@@ -228,11 +244,18 @@ function signIn(email, password) {
       url: 'https://api.paystack.co/login',
       method: 'POST',
       data: { email, password },
+      httpsAgent
     }).then(response => {
+      console.log(response);
       resolve(response.data.data)
     }).catch(error => {
-      helpers.errorLog(error.response.data.message || 'Unable to sign in, please try again in a few minutes')
-      reject(new Error('LOGIN ERROR: ' + error.response.data.message))
+      if (error.response) {
+        helpers.errorLog(JSON.stringify(error.response.data.message) || 'Unable to sign in, please try again in a few minutes')
+        reject(new Error('LOGIN ERROR: ' + error.response.data.message))
+        return
+      }
+      console.error(error);
+     
     })
   })
 }
@@ -242,12 +265,14 @@ function verifyToken(totp, token) {
     axios({
       url: 'https://api.paystack.co/verify-mfa',
       method: 'POST',
+      httpsAgent,
       headers: {
         'jwt-auth': true,
         authorization: `Bearer ${token}`,
       },
       data: { totp },
     }).then(response => {
+      console.log(response);
       resolve(response.data.data)
     }).catch(error => {
       helpers.errorLog(error.response.data.message || 'Unable to sign in, please try again in a few minutes')

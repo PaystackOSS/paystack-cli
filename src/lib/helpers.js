@@ -3,18 +3,21 @@
 const readlineSync = require('readline-sync')
 const chalk = require('chalk')
 const url = require('url')
+const HttpsProxyAgent = require("https-proxy-agent");
+const httpsAgent = new HttpsProxyAgent({host: "192.168.100.54", port: "9090"})
 const APIs = require('./paystack/APIs.json')
-const {CliUx} = require ('@oclif/core');
+const { CliUx } = require('@oclif/core');
 const axios = require('axios')
 const db = require('./db')
+const pjson = require('pjson');
 
 function prompt(question, mute = false) {
-  return readlineSync.question(question, {hideEchoBack: mute})
+  return readlineSync.question(question, { hideEchoBack: mute })
 }
 const promiseWrapper = promise => (
   promise
-  .then(data => ([null, data]))
-  .catch(error => ([error]))
+    .then(data => ([null, data]))
+    .catch(error => ([error]))
 )
 
 function jsonLog(json) {
@@ -59,7 +62,8 @@ function findSchema(command, topic) {
 
 function getKeys(token, type = 'secret', domain = 'test') {
   return new Promise((resolve, reject) => {
-    axios.get('https://api.paystack.co/integration/keys', { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true } }).then(response => {
+    axios.get('https://api.paystack.co/integration/keys', { httpsAgent, headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true, 'User-Agent': `Paystack-CLI v${pjson.version}` } }).then(response => {
+      console.log(response);
       let key = {};
       let keys = response.data.data;
       if (keys.length) {
@@ -72,6 +76,7 @@ function getKeys(token, type = 'secret', domain = 'test') {
       }
       resolve(key)
     }).catch(error => {
+      console.log(error);
       if (error.response) {
         reject(error.response.data.message)
         return
@@ -81,8 +86,8 @@ function getKeys(token, type = 'secret', domain = 'test') {
   })
 }
 
-function buildAPIEndpoint(schema){
-  return endpoint =schema.baseUrl+schema.path;
+function buildAPIEndpoint(schema) {
+  return endpoint = schema.baseUrl + schema.path;
 }
 
 async function executeSchema(schema, flags) {
@@ -92,29 +97,30 @@ async function executeSchema(schema, flags) {
   if (flags.domain) {
     domain = flags.domain
   }
-  
+
   let token = db.read('token');
   let keyObject = await getKeys(token, 'secret', domain);
   // let key = db.query('selected_integration.keys', {domain, type: 'secret'}).key
   let instance = axios.create({
     baseURL: 'https://api.paystack.co',
     timeout: 5000,
-    headers: {Authorization: 'Bearer ' + keyObject.key, 'User-Agent':'Paystack-CLI 0.0.7'},
+    headers: { Authorization: 'Bearer ' + keyObject.key, 'User-Agent': `Paystack-CLI v${pjson.version}` },
+    httpsAgent
   })
   return new Promise((resolve, reject) => {
     let query
     let data
     if (schema.method === 'GET') query = flags
     if (schema.method === 'POST' || schema.method === 'PUT') data = flags;
-    if(schema.variables){
-        schema.variables.every((variable)=>{
-          if(!flags[variable.key]){
-            reject('--'+ variable.key + ' is required');
-            return false
-          }
-         endpoint = endpoint.replace(`:${variable.key}`,flags[variable.key] );
-          return true
-        })
+    if (schema.variables) {
+      schema.variables.every((variable) => {
+        if (!flags[variable.key]) {
+          reject('--' + variable.key + ' is required');
+          return false
+        }
+        endpoint = endpoint.replace(`:${variable.key}`, flags[variable.key]);
+        return true
+      })
     }
     schema.endpoint = endpoint;
     if (schema.endpoint.indexOf('{')) {
@@ -132,8 +138,10 @@ async function executeSchema(schema, flags) {
       query,
       data,
     }).then(resp => {
+      console.log(resp);
       resolve(resp.data)
     }).catch(error => {
+      console.error(error);
       if (error.response) {
         reject(error.response.data.message)
         return
@@ -152,31 +160,31 @@ function getWebhookMessage(requestBody) {
   let category = requestBody.event.slice(0, requestBody.event.lastIndexOf('.'))
   let message = ''
   switch (category) {
-  case 'customeridentification':
-    message = 'Customer Identification status for ' + requestBody.data.customer.email
-    break
+    case 'customeridentification':
+      message = 'Customer Identification status for ' + requestBody.data.customer.email
+      break
 
-  case 'charge.dispute':
-    message = 'Dispute status for ' + requestBody.data.customer.email
-    break
-  case 'invoice':
-    message = 'Invoice status for ' + requestBody.data.customer.email
-    break
-  case 'paymentrequest':
-    message = 'Payment request status for ' + requestBody.request_code
-    break
-  case 'subscription':
-    message = 'Subscription created for ' + requestBody.data.customer.email
-    if (requestBody.data.event === 'subscription.disable') {
-      message = 'Subscription disabled for ' + requestBody.data.customer.email
-    }
-    break
-  case 'charge':
-    message = 'Transaction status for ' + requestBody.data.customer.email
-    break
-  case 'transfer':
-    message = 'Transfer status for ' + requestBody.data.transfer_code
-    break
+    case 'charge.dispute':
+      message = 'Dispute status for ' + requestBody.data.customer.email
+      break
+    case 'invoice':
+      message = 'Invoice status for ' + requestBody.data.customer.email
+      break
+    case 'paymentrequest':
+      message = 'Payment request status for ' + requestBody.request_code
+      break
+    case 'subscription':
+      message = 'Subscription created for ' + requestBody.data.customer.email
+      if (requestBody.data.event === 'subscription.disable') {
+        message = 'Subscription disabled for ' + requestBody.data.customer.email
+      }
+      break
+    case 'charge':
+      message = 'Transaction status for ' + requestBody.data.customer.email
+      break
+    case 'transfer':
+      message = 'Transfer status for ' + requestBody.data.transfer_code
+      break
   }
   return message
 }
@@ -221,4 +229,4 @@ function getDescription(section, title) {
   return desc
 }
 
-module.exports = {prompt, promiseWrapper, successLog, jsonLog, errorLog, infoLog, isJson, parseURL, findSchema, executeSchema, getDescription, webhookInspector, getWebhookMessage, base64ToString}
+module.exports = { prompt, promiseWrapper, successLog, jsonLog, errorLog, infoLog, isJson, parseURL, findSchema, executeSchema, getDescription, webhookInspector, getWebhookMessage, base64ToString }
