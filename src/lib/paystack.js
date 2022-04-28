@@ -21,7 +21,7 @@ function selectIntegration(integrations, token) {
     })
     let integration = helpers.prompt(promptMessage + '\nEnter the corresponding number - ')
 
-    axios.post('https://api.paystack.co/user/switch_integration', { integration: integrations[parseInt(integration, 10) - 1].id }, {httpsAgent, headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true,  'User-Agent':`Paystack-CLI v${pjson.version}` } }).then((response) => {
+    axios.post('https://api.paystack.co/user/switch_integration', { integration: integrations[parseInt(integration, 10) - 1].id }, { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true,  'User-Agent':`Paystack-CLI v${pjson.version}` } }).then((response) => {
       console.log(response)
       resolve(integrations[parseInt(integration, 10) - 1])
     }).catch(error => {
@@ -99,7 +99,7 @@ function setWebhook(url, token, integration, domain = 'test') {
       'jwt-auth': true,
       'User-Agent':`Paystack-CLI v${pjson.version}`
     }
-    axios.put('https://api.paystack.co/integration/webhooks', data, { httpsAgent, headers }).then(resp => {
+    axios.put('https://api.paystack.co/integration/webhooks', data, { headers }).then(resp => {
       console.log(resp);
       resolve(resp.data.message)
     }).catch(error => {
@@ -111,7 +111,7 @@ function setWebhook(url, token, integration, domain = 'test') {
 
 function getKeys(token, type = 'secret', domain = 'test') {
   return new Promise((resolve, reject) => {
-    axios.get('https://api.paystack.co/integration/keys', {httpsAgent, headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true,  'User-Agent':`Paystack-CLI v${pjson.version}` } }).then(response => {
+    axios.get('https://api.paystack.co/integration/keys', { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true,  'User-Agent':`Paystack-CLI v${pjson.version}` } }).then(response => {
       console.log(response);
       let key = {};
       let keys = response.data.data;
@@ -167,7 +167,6 @@ function pingWebhook(flags) {
       helpers.infoLog(`Sending sample ${event} event payload to ${uri}`)
       axios.post(uri, eventObject,
         {
-          httpsAgent,
           headers: {
             'x-paystack-signature': hash,
             'User-Agent':`Paystack-CLI v${pjson.version}`
@@ -209,7 +208,6 @@ function getIntegration(id, token) {
   return new Promise((resolve, reject) => {
     axios.get('https://api.paystack.co/integration/' + id,
       {
-        httpsAgent,
         headers: {
           Authorization: 'Bearer ' + token,
           'jwt-auth': true,
@@ -243,8 +241,7 @@ function signIn(email, password) {
     axios({
       url: 'https://api.paystack.co/login',
       method: 'POST',
-      data: { email, password },
-      httpsAgent
+      data: { email, password }
     }).then(response => {
       console.log(response);
       resolve(response.data.data)
@@ -265,7 +262,6 @@ function verifyToken(totp, token) {
     axios({
       url: 'https://api.paystack.co/verify-mfa',
       method: 'POST',
-      httpsAgent,
       headers: {
         'jwt-auth': true,
         authorization: `Bearer ${token}`,

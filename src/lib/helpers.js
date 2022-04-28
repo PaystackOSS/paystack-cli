@@ -62,7 +62,7 @@ function findSchema(command, topic) {
 
 function getKeys(token, type = 'secret', domain = 'test') {
   return new Promise((resolve, reject) => {
-    axios.get('https://api.paystack.co/integration/keys', { httpsAgent, headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true, 'User-Agent': `Paystack-CLI v${pjson.version}` } }).then(response => {
+    axios.get('https://api.paystack.co/integration/keys', { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true, 'User-Agent': `Paystack-CLI v${pjson.version}` } }).then(response => {
       console.log(response);
       let key = {};
       let keys = response.data.data;
@@ -104,8 +104,7 @@ async function executeSchema(schema, flags) {
   let instance = axios.create({
     baseURL: 'https://api.paystack.co',
     timeout: 5000,
-    headers: { Authorization: 'Bearer ' + keyObject.key, 'User-Agent': `Paystack-CLI v${pjson.version}` },
-    httpsAgent
+    headers: { Authorization: 'Bearer ' + keyObject.key, 'User-Agent': `Paystack-CLI v${pjson.version}` }
   })
   return new Promise((resolve, reject) => {
     let query

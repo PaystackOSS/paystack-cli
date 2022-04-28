@@ -7,6 +7,6 @@ class LogoutCommand extends Command {
   }
 }
 
-LogoutCommand.description = 'Open Paystack docs, API reference or dashboard'
+LogoutCommand.description = 'Log out of the CLI'
 
 module.exports = LogoutCommand
