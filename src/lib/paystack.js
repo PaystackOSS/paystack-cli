@@ -22,7 +22,6 @@ function selectIntegration(integrations, token) {
     let integration = helpers.prompt(promptMessage + '\nEnter the corresponding number - ')
 
     axios.post('https://api.paystack.co/user/switch_integration', { integration: integrations[parseInt(integration, 10) - 1].id }, { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true,  'User-Agent':`Paystack-CLI v${pjson.version}` } }).then((response) => {
-      console.log(response)
       resolve(integrations[parseInt(integration, 10) - 1])
     }).catch(error => {
       if(error.response){
@@ -100,7 +99,6 @@ function setWebhook(url, token, integration, domain = 'test') {
       'User-Agent':`Paystack-CLI v${pjson.version}`
     }
     axios.put('https://api.paystack.co/integration/webhooks', data, { headers }).then(resp => {
-      console.log(resp);
       resolve(resp.data.message)
     }).catch(error => {
       console.log(error.response.data)
@@ -112,7 +110,6 @@ function setWebhook(url, token, integration, domain = 'test') {
 function getKeys(token, type = 'secret', domain = 'test') {
   return new Promise((resolve, reject) => {
     axios.get('https://api.paystack.co/integration/keys', { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true,  'User-Agent':`Paystack-CLI v${pjson.version}` } }).then(response => {
-      console.log(response);
       let key = {};
       let keys = response.data.data;
       if (keys.length) {
@@ -174,7 +171,6 @@ function pingWebhook(flags) {
         },
 
       ).then(response => {
-        console.log(response);
         resolve({
           code: response.status,
           text: response.statusText,
@@ -214,7 +210,6 @@ function getIntegration(id, token) {
           'User-Agent':`Paystack-CLI v${pjson.version}`
         },
       }).then(response => {
-        console.log(response);
         resolve(response.data.data)
       }).catch(error => {
         if (error.response) {

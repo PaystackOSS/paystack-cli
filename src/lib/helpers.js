@@ -63,7 +63,6 @@ function findSchema(command, topic) {
 function getKeys(token, type = 'secret', domain = 'test') {
   return new Promise((resolve, reject) => {
     axios.get('https://api.paystack.co/integration/keys', { headers: { Authorization: 'Bearer ' + token, 'jwt-auth': true, 'User-Agent': `Paystack-CLI v${pjson.version}` } }).then(response => {
-      console.log(response);
       let key = {};
       let keys = response.data.data;
       if (keys.length) {
@@ -137,7 +136,6 @@ async function executeSchema(schema, flags) {
       query,
       data,
     }).then(resp => {
-      console.log(resp);
       resolve(resp.data)
     }).catch(error => {
       console.error(error);

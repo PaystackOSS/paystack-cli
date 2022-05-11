@@ -1,5 +1,4 @@
 let APIs = require('./src/lib/paystack/APIs.json')
-console.log( typeof APIs)
 // APIs = JSON.parse(APIs);
 const fs = require('fs');
 
@@ -14,7 +13,6 @@ function toTitleCase(str) {
 let commandKeys = Object.keys(APIs)
 let declaredCommands = [];
 commandKeys.forEach(key => {
-  console.log("..", key)
   let API = APIs[key]
   let script = `
 const {Command, Flags} = require('@oclif/core')
