@@ -32,10 +32,12 @@ class WebhookCommand extends Command {
       if (!flags.forward) {
         this.error('To listen to webhook events locally, you have to specify a local route to forward events to using the forward flag e.g --forward localhost:3000/webhook')
       }
-      let urlObject = helpers.parseURL(flags.forward)
-
+      let urlObject = helpers.parseURL(flags.forward);
+      if(urlObject.hostname !== 'localhost' && urlObject.hostname !== '127.0.0.1'){
+        return helpers.errorLog(`Invalid host provided "${urlObject.hostname}" - You can only forward events to localhost`);
+      }
       if (!urlObject.port) {
-        urlObject.port = 8080
+        urlObject.port = 80
       }
       if (!urlObject.search || urlObject.search === '?') {
         urlObject.search = ''
@@ -51,7 +53,6 @@ class WebhookCommand extends Command {
       if (flags.domain === 'live') {
         domain = 'live'
       }
-      console.log('tunnel', ngrokURL)
       let originalWebhookUrl = db.read('selected_integration.' + domain + '_webhook_endpoint')
       helpers.infoLog(`Forwarding webhook events to ${flags.forward}`)
 

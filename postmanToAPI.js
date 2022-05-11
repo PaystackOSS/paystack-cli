@@ -20,15 +20,12 @@ collection.item.forEach((APIObject) => {
                     subcommand_name = _subObject.name.toLowerCase();
                     subcommand_name = subcommand_name.replace(/ /g, '');
                     if (isAPIObject(_subObject)) {
-                        //add to API collection
                         let formattedAPI = createAPIObject(_subObject, command_name);
                         parsedAPIs[command_name].push(formattedAPI);
-                        // console.log(Object.keys(_subObject))
                     } else {
                         // console.log('Naah', _subObject)
                     }
                 })
-                // console.log('sub-'+subcommand_name, subObject.item.length);
             } else {
                 //add to API collection
                 let formattedAPI = createAPIObject(subObject, command_name);

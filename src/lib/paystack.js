@@ -101,6 +101,10 @@ function setWebhook(url, token, integration, domain = 'test') {
     axios.put('https://api.paystack.co/integration/webhooks', data, { headers }).then(resp => {
       resolve(resp.data.message)
     }).catch(error => {
+      if(error.response){
+        reject(error.response.data.message);
+        return
+      }
       console.log(error.response.data)
       reject(error)
     })
@@ -238,7 +242,6 @@ function signIn(email, password) {
       method: 'POST',
       data: { email, password }
     }).then(response => {
-      console.log(response);
       resolve(response.data.data)
     }).catch(error => {
       if (error.response) {
@@ -263,7 +266,6 @@ function verifyToken(totp, token) {
       },
       data: { totp },
     }).then(response => {
-      console.log(response);
       resolve(response.data.data)
     }).catch(error => {
       helpers.errorLog(error.response.data.message || 'Unable to sign in, please try again in a few minutes')

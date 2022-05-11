@@ -21,14 +21,7 @@ const promiseWrapper = promise => (
 )
 
 function jsonLog(json) {
-  // let keys = Object.keys(json)
   console.log(json)
-  // keys.forEach(k => {
-  //   if (isJson(json[k]) || json[k] == null) {
-  //     return
-  //   }
-  //   infoLog(`${k} - - - -- - -- - - - - - -  - - - -  - ${json[k]}`)
-  // })
 }
 function successLog(error) {
   const eLog = chalk.green(error)
@@ -43,7 +36,7 @@ function isJson(val) {
 }
 
 function infoLog(error) {
-  const eLog = chalk.blue(error)
+  const eLog = chalk.blueBright(error)
   console.log(eLog)
 }
 function parseURL(uri) {
@@ -205,13 +198,13 @@ function webhookInspector(ngrokApi, tunnel) {
       requestBody = JSON.parse(requestBody)
       let responseCode = lastRequest.response.status_code.toString()
       let webhookDescription = getWebhookMessage(requestBody)
-      let responseMessage = responseCode + ' ' + lastRequest.response.status + ' - ' + requestBody.event + ' - ' + webhookDescription
+      let responseMessage =  lastRequest.response.status + ' - ' + requestBody.event + ' - ' + webhookDescription
       if (responseCode.slice(0, 1) !== '2') {
         responseMessage = chalk.red(responseMessage)
       }
       console.log(responseMessage)
       console.log(base64ToString(lastRequest.response.raw))
-      console.log('----------------------------------------------')
+      console.log('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -')
     })
   }, 5000)
 }
