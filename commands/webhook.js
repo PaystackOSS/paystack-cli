@@ -1,6 +1,6 @@
-const ngrok = require('ngrok');
-const helpers = require('../lib/helpers');
-const Paystack = require('../lib/Paystack');
+import ngrok from 'ngrok';
+import * as helpers from '../lib/helpers.js';
+import * as Paystack from '../lib/Paystack.js';
 
 const init = () => {
   vorpal
@@ -104,4 +104,4 @@ const init = () => {
     });
 };
 
-module.exports = init;
+export default init;

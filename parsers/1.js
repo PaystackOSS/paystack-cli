@@ -1,4 +1,5 @@
-const fs = require('fs');
+import fs from 'fs';
+
 fs.readFile('./apis.json', function read(err, data) {
   if (err) {
     throw err;

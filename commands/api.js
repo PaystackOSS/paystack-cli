@@ -1,7 +1,8 @@
-const APIs = require('../lib/paystack/apis');
-const helpers = require('../lib/helpers');
+import APIs from '../lib/paystack/apis.js';
+import * as helpers from '../lib/helpers.js';
 
 let commands = Object.keys(APIs);
+
 const init = () => {
   commands.forEach((command) => {
     let section = APIs[command];
@@ -48,4 +49,4 @@ const init = () => {
   });
 };
 
-module.exports = init;
+export default init;

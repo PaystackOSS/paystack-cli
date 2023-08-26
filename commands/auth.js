@@ -1,5 +1,6 @@
-const helpers = require('../lib/helpers');
-const Paystack = require('../lib/Paystack');
+import * as helpers from '../lib/helpers.js';
+import * as Paystack from '../lib/Paystack.js';
+
 const init = function () {
   vorpal
     .command('login', 'Sign in with your Paystack username and password')
@@ -77,4 +78,4 @@ const init = function () {
     });
 };
 
-module.exports = init;
+export default init;

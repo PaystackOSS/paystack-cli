@@ -1,15 +1,15 @@
-const helpers = require('../lib/helpers');
-const shell = require('shelljs');
+import * as helpers from '../lib/helpers.js';
+import shell from 'shelljs';
 
 if (!shell.which('git')) {
   shell.echo('Sorry, this script requires git');
   shell.exit(1);
 }
 
-let samples = require('../lib/samples');
+import samples from '../lib/samples.js';
+const keys = Object.keys(samples);
 
 const init = () => {
-  let keys = Object.keys(samples);
   vorpal
     .command(
       'sample <sample_name> <outputDir>',
@@ -45,4 +45,4 @@ const init = () => {
     });
 };
 
-module.exports = init;
+export default init;
