@@ -1,7 +1,6 @@
 import * as helpers from '../lib/helpers.js';
 import * as Paystack from '../lib/Paystack.js';
 
-// TODO(tobshub): remove duplicate logic with `Paystack.signIn`
 const init = () => {
   vorpal
     .command('login', 'Sign in with your Paystack username and password')
