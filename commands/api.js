@@ -9,8 +9,8 @@ const init = () => {
     let vorp = vorpal
       .command(command + ' <command>', helpers.getDescription(section, command))
       .validate(function (args) {
-        let selected_integration = db.read('selected_integration.id');
-        let user = db.read('user.id');
+        let selected_integration = db.read('selected_integration')['id'];
+        let user = db.read('user')['id'];
         if (!selected_integration || !user) {
           helpers.errorLog(
             "You're not signed in, please run the `login` command before you begin"
