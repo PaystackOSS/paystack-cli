@@ -2,7 +2,7 @@
 
 import vorpal from 'vorpal';
 import shell from 'shelljs';
-import db from './lib/db.js';
+import * as db from './lib/db.js';
 
 globalThis.vorpal = new vorpal();
 globalThis.db = db;
