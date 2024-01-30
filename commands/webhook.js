@@ -6,16 +6,16 @@ const init = () => {
   vorpal
     .command(
       'webhook <command> [local_route]',
-      'runs a webhook endpoint health check and listens for incoming webhooks".'
+      'runs a webhook endpoint health check and listens for incoming webhooks".',
     )
     .option('--domain  <value>', '  ')
     .option('--event  <value>', '  ')
     .validate(function (args) {
-      let selected_integration = db.read('selected_integration.id');
-      let user = db.read('user.id');
+      let selected_integration = db.read('selected_integration').id;
+      let user = db.read('user').id;
       if (!selected_integration || !user) {
         helpers.errorLog(
-          "You're not signed in, please run the `login` command before you begin"
+          "You're not signed in, please run the `login` command before you begin",
         );
         return false;
       }
@@ -31,10 +31,10 @@ const init = () => {
         } else {
           let password = helpers.prompt(
             "What's your paystack password:\n>",
-            true
+            true,
           );
           var [err, result] = await helpers.promiseWrapper(
-            Paystack.signIn(db.read('user.email'), password)
+            Paystack.signIn(db.read('user').email, password),
           );
           if (!result) {
             return;
@@ -44,7 +44,7 @@ const init = () => {
 
         if (!args.local_route) {
           helpers.errorLog(
-            'To listen to webhook events locally, you have to specify a local url to forward events to e.g localhost:3000/webhook'
+            'To listen to webhook events locally, you have to specify a local url to forward events to e.g localhost:3000/webhook',
           );
           return;
         }
@@ -74,22 +74,22 @@ const init = () => {
           Paystack.setWebhook(
             ngrokURL,
             token,
-            db.read('selected_integration.id')
-          )
+            db.read('selected_integration').id,
+          ),
         );
         if (err) {
           this.log(err);
           return;
         } else {
           this.log(
-            'Webhook events would now be received at ' + args.local_route
+            'Webhook events would now be received at ' + args.local_route,
           );
         }
       } else if (args.command == 'ping') {
         await helpers.promiseWrapper(Paystack.refreshIntegration(args));
 
         var [e, response] = await helpers.promiseWrapper(
-          Paystack.pingWebhook(args)
+          Paystack.pingWebhook(args),
         );
         helpers.infoLog('-  - - - - WEBHOOK RESPONSE - - - -  - -');
         helpers.infoLog(response.code + ' - - ' + response.text);

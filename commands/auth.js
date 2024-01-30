@@ -18,7 +18,7 @@ const init = () => {
         const password = helpers.prompt('Password\n', true);
 
         const [e, response] = await helpers.promiseWrapper(
-          Paystack.signIn(email, password)
+          Paystack.signIn(email, password),
         );
 
         if (response && response.data) {
@@ -30,15 +30,15 @@ const init = () => {
 
       if (token && user) {
         const [err, integration] = await helpers.promiseWrapper(
-          Paystack.selectIntegration(user.integrations, token)
+          Paystack.selectIntegration(user.integrations, token),
         );
         if (err) {
           helpers.errorLog(err);
         } else {
           db.write('selected_integration', integration);
-          let user_role = db.read('selected_integration.logged_in_user_role');
+          let user_role = db.read('selected_integration').logged_in_user_role;
           const [err, integrationData] = await helpers.promiseWrapper(
-            Paystack.getIntegration(integration.id, token)
+            Paystack.getIntegration(integration.id, token),
           );
           if (err) {
             helpers.errorLog(err);
@@ -53,7 +53,7 @@ const init = () => {
               integration.business_name +
               ' (' +
               integration.id +
-              ')'
+              ')',
           );
         }
       } else {
