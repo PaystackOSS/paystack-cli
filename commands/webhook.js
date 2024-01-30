@@ -62,7 +62,10 @@ const init = () => {
           //log error
         }
 
-        let ngrokHost = await ngrok.connect(urlObject.port);
+        let ngrokHost = await ngrok.connect({
+          addr: urlObject.port,
+          authtoken: process.env.NGROK_AUTH_TOKEN,
+        });
 
         let ngrokURL = ngrokHost + urlObject.pathname + urlObject.search;
         let domain = 'test';

@@ -75,7 +75,10 @@ transaction_date - - - -- - -- - - - - - -  - - - -  - 2020-02-27T17:27:31.000Z
 
 ### Webhook
 
-You can tunnel Paystack webhook events directly to your localhost without any third party software directly from your terminal
+You can tunnel Paystack webhook events directly to your localhost without any third party software directly from your terminal.
+
+You first need to sign up (or login) on [ngrok](https://ngrok.com/) and obtain your auth token.
+Then add it as an environment variable `NGROK_AUTH_TOKEN`
 
 ```
  $ webhook listen localhost:8995/pay/pstk-webhook?country=ng
