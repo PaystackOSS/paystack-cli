@@ -1,61 +1,65 @@
-const helpers = require('../lib/helpers')
-const Paystack = require('../lib/Paystack')
-const init = function () {
-    vorpal.command('login', 'Sign in with your Paystack username and password').action(async function (args, callback) {
-        let token = ''
-        let expiry = parseInt(db.read('token_expiry')) * 1000;
-        let now = parseFloat(Date.now().toString())
-        let user;
-        if (expiry > now) {
-            token = db.read('token');
-            user = db.read('user');
-            helpers.successLog("You're already logged in")
-        }
-        else {
-            var email = helpers.prompt('Email address\n')
-            let password = helpers.prompt('Password\n', true)
-            var [e, response] = await helpers.promiseWrapper(Paystack.signIn(email, password))
+import * as helpers from '../lib/helpers.js';
+import * as Paystack from '../lib/Paystack.js';
 
-            if (response && !response.mfa_required) {
-                token = response.token;
-                user = response.user;
-                db.write('token', token)
-                db.write('user', user)
-                helpers.successLog('Login successful')
-            } else if (response && response.mfa_required) {
-              var totp = helpers.prompt('*MFA required* Enter 6-digit verification code\n')
-              var [e, response] =  await helpers.promiseWrapper(Paystack.verifyMfa(totp, response.token))
-              if (response) {
-                token = response.token
-                user = response.user
-                db.write('token', token)
-                db.write('user', user)
-                helpers.successLog('Login successful')
-              }
-            } else{
-                helpers.errorLog('Login failed')
-                return;
-            }
+const init = () => {
+  vorpal
+    .command('login', 'Sign in with your Paystack username and password')
+    .action(async (_args, _callback) => {
+      let token, user;
+      let expiry = parseInt(db.read('token_expiry')) * 1000;
+      let now = parseFloat(Date.now().toString());
+      if (expiry > now) {
+        token = db.read('token');
+        user = db.read('user');
+        helpers.successLog("You're already logged in");
+        return;
+      } else {
+        const email = helpers.prompt('Email address\n');
+        const password = helpers.prompt('Password\n', true);
+
+        const [e, response] = await helpers.promiseWrapper(
+          Paystack.signIn(email, password),
+        );
+
+        if (response && response.data) {
+          Paystack.storeLoginDetails(response);
+          token = response.data.token;
+          user = response.data.user;
         }
-        if (response || (token && user)) {
-            var [err, integration] = await helpers.promiseWrapper(Paystack.selectIntegration(user.integrations, token))
-            if (err) {
-                helpers.errorLog(err);
-            }
-            db.write('selected_integration', integration);
-            let user_role = db.read('selected_integration.logged_in_user_role');
-            var [err, integrationData] = await helpers.promiseWrapper(Paystack.getIntegration(integration.id, token));
-            if (err) {
-                helpers.errorLog(err);
-                return
-            }
-            integrationData.logged_in_user_role = user_role;
-            db.write('selected_integration', integrationData);
-            helpers.infoLog('Logged in as ' + user.email + ' -  ' + integration.business_name + ' (' + integration.id + ')');
+      }
+
+      if (token && user) {
+        const [err, integration] = await helpers.promiseWrapper(
+          Paystack.selectIntegration(user.integrations, token),
+        );
+        if (err) {
+          helpers.errorLog(err);
         } else {
-            helpers.errorLog(' - -  - - -  - ')
+          db.write('selected_integration', integration);
+          let user_role = db.read('selected_integration').logged_in_user_role;
+          const [err, integrationData] = await helpers.promiseWrapper(
+            Paystack.getIntegration(integration.id, token),
+          );
+          if (err) {
+            helpers.errorLog(err);
+            return;
+          }
+          integrationData.logged_in_user_role = user_role;
+          db.write('selected_integration', integrationData);
+          helpers.infoLog(
+            'Logged in as ' +
+              user.email +
+              ' -  ' +
+              integration.business_name +
+              ' (' +
+              integration.id +
+              ')',
+          );
         }
-    })
-}
+      } else {
+        helpers.errorLog(' - -  - - -  - ');
+      }
+    });
+};
 
-module.exports = init
+export default init;
