@@ -1,4 +1,4 @@
-import ngrok from 'ngrok';
+import * as tunnel from '../lib/tunnel.js';
 import * as helpers from '../lib/helpers.js';
 import * as Paystack from '../lib/Paystack.js';
 
@@ -56,36 +56,45 @@ const init = () => {
         if (!urlObject.search || urlObject.search == '?') {
           urlObject.search = '';
         }
+
+        let targetHost = `${urlObject.protocol || 'http:'}//${urlObject.hostname || 'localhost'}:${urlObject.port}`;
+        helpers.infoLog(`Establishing zero-config tunnel to ${targetHost}...`);
+
+        let tunnelInstance;
         try {
-          await ngrok.kill();
+          tunnelInstance = await tunnel.startTunnel(targetHost);
         } catch (e) {
-          //log error
+          helpers.errorLog('Failed to start tunnel: ' + (e.message || e));
+          return;
         }
 
-        let ngrokHost = await ngrok.connect({
-          addr: urlObject.port,
-          authtoken: process.env.NGROK_AUTH_TOKEN,
-        });
-
-        let ngrokURL = ngrokHost + urlObject.pathname + urlObject.search;
+        let tunnelURL = tunnelInstance.url;
+        let webhookURL = tunnelURL + (urlObject.pathname || '') + (urlObject.search || '');
         let domain = 'test';
         if (args.options.domain == 'live') {
           domain = 'live';
         }
-        helpers.infoLog('Tunelling webhook events to ' + args.local_route);
+        helpers.infoLog(`Tunnel URL: ${tunnelURL}`);
+        helpers.infoLog('Tunneling webhook events to ' + args.local_route);
         var [err, result] = await helpers.promiseWrapper(
           Paystack.setWebhook(
-            ngrokURL,
+            webhookURL,
             token,
             db.read('selected_integration').id,
+            domain,
           ),
         );
         if (err) {
           this.log(err);
           return;
         } else {
+          let selected = db.read('selected_integration');
+          if (selected) {
+            selected[domain + '_webhook_endpoint'] = webhookURL;
+            db.write('selected_integration', selected);
+          }
           this.log(
-            'Webhook events would now be received at ' + args.local_route,
+            'Webhook events will now be received at ' + args.local_route,
           );
         }
       } else if (args.command == 'ping') {

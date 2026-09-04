@@ -75,10 +75,7 @@ transaction_date - - - -- - -- - - - - - -  - - - -  - 2020-02-27T17:27:31.000Z
 
 ### Webhook
 
-You can tunnel Paystack webhook events directly to your localhost without any third party software directly from your terminal.
-
-You first need to sign up (or login) on [ngrok](https://ngrok.com/) and obtain your auth token.
-Then add it as an environment variable `NGROK_AUTH_TOKEN`
+You can tunnel Paystack webhook events directly to your localhost with zero configuration directly from your terminal (no accounts or auth tokens required).
 
 ```
  $ webhook listen localhost:8995/pay/pstk-webhook?country=ng
@@ -87,8 +84,10 @@ Then add it as an environment variable `NGROK_AUTH_TOKEN`
 #### output
 
 ```sh
-> Tunelling webhook events to localhost:8995/pay/pstk-webhook?country=ng
-> Webhook events would now be received at localhost:8995/pay/pstk-webhook?country=ng
+> Establishing zero-config tunnel to http://localhost:8995...
+> Tunnel URL: https://example.trycloudflare.com
+> Tunneling webhook events to localhost:8995/pay/pstk-webhook?country=ng
+> Webhook events will now be received at localhost:8995/pay/pstk-webhook?country=ng
 ```
 
 NOTE - This command is only avalaible in test mode, and by using this command, the CLI would automatically make changes to the Test Webhook URL set on your Paystack dashboard.
